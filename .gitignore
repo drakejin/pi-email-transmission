@@ -1,2 +1,3 @@
-src/imap/pit-web
-src/imap/pit-imap
+pi-imap-transmission
+src/imap/__pycache__
+src/modules/__pycache__

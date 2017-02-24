@@ -1,0 +1,11 @@
+{
+    "email_check_interval" : 2,
+    "email_host" : "imap.naver.com",
+    "email_port" : 993,
+    "email_input_folder" : "pi-torrent-noty",
+    "email_user" : "dydwls121200@naver.com",
+    "email_password" : "choco2323!",
+    "transmission_user" : "likemilk",
+    "transmission_password" : "choco2323!",
+    "transmission_host" : "http://localhost:9091"
+}
