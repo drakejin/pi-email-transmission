@@ -28,18 +28,27 @@ emailConnection.login(
 
 transmissionConnection = TransmissionRpc(configData)
 
+
 def proc_email(message, mail_id):
     msg = email.message_from_bytes(message)
+    seen_flag = False
 
     for part in msg.walk():
         logger.debug(part.get_content_type())
         if part.get_content_type() == 'application/x-bittorrent':
             torrent_data_64 = part.get_payload()
-            logger.debug(torrent_data_64)
-            transmissionConnection.request(
+
+            # regist torrent file
+            result = transmissionConnection.request(
                 "torrent-add",
                 {"metainfo": torrent_data_64}
             )
+            logger.debug(result)
+
+        # set seen flag
+        seen_flag = True
+
+    return seen_flag
 
 
 def run():
@@ -58,14 +67,16 @@ def run():
 
         logger.debug(result)
         logger.debug(data)
-        logger.debug(data[0])
-        uid_list = data[0]
-        uids = uid_list.split()
+        uids = data[0].split()
 
         for uid in uids:
             try:
                 result, data = emailConnection.uid('fetch', uid, '(RFC822)')
-                proc_email(data[0][1], uid.decode('UTF-8'))
+                seen = proc_email(data[0][1], uid.decode('UTF-8'))
+                if seen:
+                    result = emailConnection.store(uid, '+FLAGS', '\\Seen')
+                    # result = emailConnection.fetch(uid.decode('UTF-8'), '(+FLAGS (\\Seen)')
+                    logger.debug(result)
             except Exception as e:
                 logger.debug(e)
 

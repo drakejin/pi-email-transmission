@@ -1,5 +1,23 @@
 # *This project is not available yet. Now procceeding*
 
+
+1. IMAP Read Function.
+ 1. [x] Connect with Email through IMAP Protocol
+ 2. [x] Connect with Transmission Web Controller throu http Protocol
+ 3. [x] Read folder of Email List And Get torrent files.
+ 4. [x] The torrent files will be transported to transmission web controller.
+ 5. If the 4th work were Okey, This program send through READ flag to
+ Connected Email Account.
+ 6. At the same time, Send an mail to connected account what transmission
+ successfully regist your torrent files with detail information.
+
+2. Send an Notify Function
+
+
+
+
+
+
 # pi-imap-transmission  
  
  - This program read your email service through IMAP protocol to install any torrent
