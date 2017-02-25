@@ -1,4 +1,21 @@
-pi-imap-transmission
-src/imap/__pycache__
-src/modules/__pycache__
+# Auto generates
+pit.egg-info
+build
+dist
+virtualenv
+pit/**/*/__pycache__
 logs
+
+# Default Setup
+config_dev.json
+
+
+
+# Compiled Python Modules
+*.pyc
+
+
+# Python egg metadata, regenerated from source files by setuptools
+/*.egg-info
+/*.egg
+
