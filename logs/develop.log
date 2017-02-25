@@ -181,3 +181,102 @@
 [DEBUG|transmissionWebAPI.py:68]2017-02-25 01:08:40,086 > {"arguments":{"alt-speed-down":50,"alt-speed-enabled":false,"alt-speed-time-begin":540,"alt-speed-time-day":127,"alt-speed-time-enabled":false,"alt-speed-time-end":1020,"alt-speed-up":50,"blocklist-enabled":false,"blocklist-size":0,"blocklist-url":"http://www.example.com/blocklist","cache-size-mb":4,"config-dir":"/home/likemilk/.config/transmission","dht-enabled":true,"download-dir":"/home/likemilk/\ub2e4\uc6b4\ub85c\ub4dc","download-dir-free-space":8441782272,"download-queue-enabled":true,"download-queue-size":5,"encryption":"preferred","idle-seeding-limit":30,"idle-seeding-limit-enabled":false,"incomplete-dir":"/home/likemilk/\ub2e4\uc6b4\ub85c\ub4dc","incomplete-dir-enabled":false,"lpd-enabled":false,"peer-limit-global":200,"peer-limit-per-torrent":50,"peer-port":51413,"peer-port-random-on-start":false,"pex-enabled":true,"port-forwarding-enabled":true,"queue-stalled-enabled":true,"queue-stalled-minutes":30,"rename-partial-files":true,"rpc-version":15,"rpc-version-minimum":1,"script-torrent-done-enabled":false,"script-torrent-done-filename":"/home/likemilk","seed-queue-enabled":false,"seed-queue-size":10,"seedRatioLimit":2,"seedRatioLimited":false,"speed-limit-down":100,"speed-limit-down-enabled":false,"speed-limit-up":100,"speed-limit-up-enabled":false,"start-added-torrents":true,"trash-original-torrent-files":false,"units":{"memory-bytes":1024,"memory-units":["KiB","MiB","GiB","TiB"],"size-bytes":1000,"size-units":["kB","MB","GB","TB"],"speed-bytes":1000,"speed-units":["kB/\ucd08","MB/\ucd08","GB/\ucd08","TB/\ucd08"]},"utp-enabled":true,"version":"2.84 (14307)"},"result":"success"}
 
 [DEBUG|transmissionWebAPI.py:109]2017-02-25 01:08:40,086 > <__main__.Connection object at 0x7f07729d3940>
+[DEBUG|imap.py:12]2017-02-25 01:46:15,132 > read
+[DEBUG|imap.py:15]2017-02-25 01:46:15,132 > <_io.TextIOWrapper name='/home/likemilk/workspace/pi-imap-transmission/config.json' mode='r' encoding='UTF-8'>
+[DEBUG|imap.py:17]2017-02-25 01:46:15,133 > {'transmission_user': 'likemilk', 'email_user': 'dydwls121200@naver.com', 'email_host': 'imap.naver.com', 'transmission_host': 'http://localhost:9091', 'email_port': 993, 'email_check_interval': 2, 'transmission_password': 'choco2323!', 'email_input_folder': 'pi-torrent-noty', 'email_password': 'choco2323!'}
+[DEBUG|imap.py:55]2017-02-25 01:46:15,422 > run
+[DEBUG|imap.py:60]2017-02-25 01:46:17,425 > loop start----------------------- 
+[DEBUG|imap.py:61]2017-02-25 01:46:17,426 > -- Check Email 
+[DEBUG|imap.py:63]2017-02-25 01:46:17,476 > ('OK', [b'1 2 3 4 5 6 7 8'])
+[DEBUG|imap.py:68]2017-02-25 01:46:17,493 > OK
+[DEBUG|imap.py:69]2017-02-25 01:46:17,493 > [b'7257 7271 7284 7306 7308 7313 7314 7315']
+[DEBUG|imap.py:37]2017-02-25 01:46:17,595 > text/html
+[DEBUG|imap.py:81]2017-02-25 01:46:17,614 > STORE command error: BAD [b'Error in IMAP command STORE: Invalid messageset']
+[DEBUG|imap.py:37]2017-02-25 01:46:17,694 > multipart/alternative
+[DEBUG|imap.py:37]2017-02-25 01:46:17,695 > text/plain
+[DEBUG|imap.py:37]2017-02-25 01:46:17,695 > text/html
+[DEBUG|imap.py:81]2017-02-25 01:46:17,711 > STORE command error: BAD [b'Error in IMAP command STORE: Invalid messageset']
+[DEBUG|imap.py:37]2017-02-25 01:46:17,797 > multipart/mixed
+[DEBUG|imap.py:37]2017-02-25 01:46:17,797 > text/html
+[DEBUG|imap.py:81]2017-02-25 01:46:17,814 > STORE command error: BAD [b'Error in IMAP command STORE: Invalid messageset']
+[DEBUG|imap.py:37]2017-02-25 01:46:17,893 > multipart/mixed
+[DEBUG|imap.py:37]2017-02-25 01:46:17,893 > text/html
+[DEBUG|imap.py:81]2017-02-25 01:46:17,910 > STORE command error: BAD [b'Error in IMAP command STORE: Invalid messageset']
+[DEBUG|imap.py:37]2017-02-25 01:46:17,970 > multipart/mixed
+[DEBUG|imap.py:37]2017-02-25 01:46:17,970 > multipart/alternative
+[DEBUG|imap.py:37]2017-02-25 01:46:17,970 > text/plain
+[DEBUG|imap.py:37]2017-02-25 01:46:17,971 > text/html
+[DEBUG|imap.py:37]2017-02-25 01:46:17,971 > application/x-bittorrent
+[DEBUG|imap.py:46]2017-02-25 01:46:17,992 > <http.client.HTTPResponse object at 0x7f4131f7c9e8>
+[DEBUG|imap.py:81]2017-02-25 01:46:18,008 > STORE command error: BAD [b'Error in IMAP command STORE: Invalid messageset']
+[DEBUG|imap.py:37]2017-02-25 01:46:18,109 > multipart/mixed
+[DEBUG|imap.py:37]2017-02-25 01:46:18,110 > text/html
+[DEBUG|imap.py:81]2017-02-25 01:46:18,126 > STORE command error: BAD [b'Error in IMAP command STORE: Invalid messageset']
+[DEBUG|imap.py:37]2017-02-25 01:46:18,174 > multipart/mixed
+[DEBUG|imap.py:37]2017-02-25 01:46:18,177 > text/html
+[DEBUG|imap.py:81]2017-02-25 01:46:18,198 > STORE command error: BAD [b'Error in IMAP command STORE: Invalid messageset']
+[DEBUG|imap.py:37]2017-02-25 01:46:18,239 > multipart/alternative
+[DEBUG|imap.py:37]2017-02-25 01:46:18,239 > text/plain
+[DEBUG|imap.py:37]2017-02-25 01:46:18,240 > text/html
+[DEBUG|imap.py:81]2017-02-25 01:46:18,253 > STORE command error: BAD [b'Error in IMAP command STORE: Invalid messageset']
+[DEBUG|imap.py:83]2017-02-25 01:46:18,254 > loop end----------------------- 
+[DEBUG|imap.py:12]2017-02-25 01:47:09,684 > read
+[DEBUG|imap.py:15]2017-02-25 01:47:09,685 > <_io.TextIOWrapper name='/home/likemilk/workspace/pi-imap-transmission/config.json' mode='r' encoding='UTF-8'>
+[DEBUG|imap.py:17]2017-02-25 01:47:09,686 > {'email_user': 'dydwls121200@naver.com', 'email_input_folder': 'pi-torrent-noty', 'email_host': 'imap.naver.com', 'email_check_interval': 2, 'transmission_password': 'choco2323!', 'email_password': 'choco2323!', 'transmission_user': 'likemilk', 'transmission_host': 'http://localhost:9091', 'email_port': 993}
+[DEBUG|imap.py:55]2017-02-25 01:47:09,926 > run
+[DEBUG|imap.py:60]2017-02-25 01:47:11,926 > loop start----------------------- 
+[DEBUG|imap.py:61]2017-02-25 01:47:11,927 > -- Check Email 
+[DEBUG|imap.py:63]2017-02-25 01:47:11,979 > ('OK', [b'1 2 3 4 5 6 7 8'])
+[DEBUG|imap.py:68]2017-02-25 01:47:11,997 > OK
+[DEBUG|imap.py:69]2017-02-25 01:47:11,997 > [b'7257 7271 7284 7306 7308 7313 7314 7315']
+[DEBUG|imap.py:37]2017-02-25 01:47:12,060 > text/html
+[DEBUG|imap.py:79]2017-02-25 01:47:12,101 > ('OK', [b'1 (FLAGS (\\Seen) UID 7257)'])
+[DEBUG|imap.py:37]2017-02-25 01:47:12,198 > multipart/alternative
+[DEBUG|imap.py:37]2017-02-25 01:47:12,198 > text/plain
+[DEBUG|imap.py:37]2017-02-25 01:47:12,198 > text/html
+[DEBUG|imap.py:79]2017-02-25 01:47:12,260 > ('OK', [b'2 (FLAGS (\\Flagged \\Seen) UID 7271)'])
+[DEBUG|imap.py:37]2017-02-25 01:47:12,310 > multipart/mixed
+[DEBUG|imap.py:37]2017-02-25 01:47:12,311 > text/html
+[DEBUG|imap.py:79]2017-02-25 01:47:12,347 > ('OK', [b'3 (FLAGS (\\Seen) UID 7284)'])
+[DEBUG|imap.py:37]2017-02-25 01:47:12,378 > multipart/mixed
+[DEBUG|imap.py:37]2017-02-25 01:47:12,379 > text/html
+[DEBUG|imap.py:79]2017-02-25 01:47:12,410 > ('OK', [b'4 (FLAGS (\\Seen) UID 7306)'])
+[DEBUG|imap.py:37]2017-02-25 01:47:12,484 > multipart/mixed
+[DEBUG|imap.py:37]2017-02-25 01:47:12,486 > multipart/alternative
+[DEBUG|imap.py:37]2017-02-25 01:47:12,487 > text/plain
+[DEBUG|imap.py:37]2017-02-25 01:47:12,487 > text/html
+[DEBUG|imap.py:37]2017-02-25 01:47:12,488 > application/x-bittorrent
+[DEBUG|imap.py:46]2017-02-25 01:47:12,495 > <http.client.HTTPResponse object at 0x7f8c90d699b0>
+[DEBUG|imap.py:79]2017-02-25 01:47:12,532 > ('OK', [b'5 (FLAGS (\\Seen) UID 7308)'])
+[DEBUG|imap.py:37]2017-02-25 01:47:12,654 > multipart/mixed
+[DEBUG|imap.py:37]2017-02-25 01:47:12,654 > text/html
+[DEBUG|imap.py:79]2017-02-25 01:47:12,690 > ('OK', [b'6 (FLAGS (\\Seen) UID 7313)'])
+[DEBUG|imap.py:37]2017-02-25 01:47:12,743 > multipart/mixed
+[DEBUG|imap.py:37]2017-02-25 01:47:12,744 > text/html
+[DEBUG|imap.py:79]2017-02-25 01:47:12,785 > ('OK', [b'7 (FLAGS (\\Seen) UID 7314)'])
+[DEBUG|imap.py:37]2017-02-25 01:47:12,813 > multipart/alternative
+[DEBUG|imap.py:37]2017-02-25 01:47:12,813 > text/plain
+[DEBUG|imap.py:37]2017-02-25 01:47:12,813 > text/html
+[DEBUG|imap.py:79]2017-02-25 01:47:12,847 > ('OK', [b'8 (FLAGS (\\Seen) UID 7315)'])
+[DEBUG|imap.py:83]2017-02-25 01:47:12,847 > loop end----------------------- 
+[DEBUG|imap.py:60]2017-02-25 01:47:14,849 > loop start----------------------- 
+[DEBUG|imap.py:61]2017-02-25 01:47:14,850 > -- Check Email 
+[DEBUG|imap.py:63]2017-02-25 01:47:14,886 > ('OK', [b'1 2 3 4 5 6 7 8'])
+[DEBUG|imap.py:68]2017-02-25 01:47:14,905 > OK
+[DEBUG|imap.py:69]2017-02-25 01:47:14,905 > [b'']
+[DEBUG|imap.py:83]2017-02-25 01:47:14,905 > loop end----------------------- 
+[DEBUG|imap.py:60]2017-02-25 01:47:16,908 > loop start----------------------- 
+[DEBUG|imap.py:61]2017-02-25 01:47:16,908 > -- Check Email 
+[DEBUG|imap.py:63]2017-02-25 01:47:16,944 > ('OK', [b'1 2 3 4 5 6 7 8'])
+[DEBUG|imap.py:68]2017-02-25 01:47:16,961 > OK
+[DEBUG|imap.py:69]2017-02-25 01:47:16,962 > [b'']
+[DEBUG|imap.py:83]2017-02-25 01:47:16,962 > loop end----------------------- 
+[DEBUG|transmissionWebAPI.py:103]2017-02-25 13:20:01,513 > <_io.TextIOWrapper name='/home/likemilk/workspace/pi-imap-transmission/config.json' mode='r' encoding='UTF-8'>
+[DEBUG|transmissionWebAPI.py:105]2017-02-25 13:20:01,514 > {'email_password': 'choco2323!', 'email_host': 'imap.naver.com', 'email_user': 'dydwls121200@naver.com', 'transmission_user': 'likemilk', 'email_input_folder': 'pi-torrent-noty', 'transmission_host': 'http://localhost:9091', 'email_port': 993, 'email_check_interval': 2, 'transmission_password': 'choco2323!'}
+[DEBUG|transmissionWebAPI.py:32]2017-02-25 13:20:01,515 > bGlrZW1pbGs6Y2hvY28yMzIzIQ==
+[DEBUG|transmissionWebAPI.py:59]2017-02-25 13:20:01,522 > Fail
+[DEBUG|transmissionWebAPI.py:62]2017-02-25 13:20:01,522 > Set X-Transmission-Session-Id
+[DEBUG|transmissionWebAPI.py:57]2017-02-25 13:20:01,524 > Success
+[DEBUG|transmissionWebAPI.py:68]2017-02-25 13:20:01,524 > {"arguments":{"alt-speed-down":50,"alt-speed-enabled":false,"alt-speed-time-begin":540,"alt-speed-time-day":127,"alt-speed-time-enabled":false,"alt-speed-time-end":1020,"alt-speed-up":50,"blocklist-enabled":false,"blocklist-size":0,"blocklist-url":"http://www.example.com/blocklist","cache-size-mb":4,"config-dir":"/home/likemilk/.config/transmission","dht-enabled":true,"download-dir":"/home/likemilk/\ub2e4\uc6b4\ub85c\ub4dc","download-dir-free-space":8442204160,"download-queue-enabled":true,"download-queue-size":5,"encryption":"preferred","idle-seeding-limit":30,"idle-seeding-limit-enabled":false,"incomplete-dir":"/home/likemilk/\ub2e4\uc6b4\ub85c\ub4dc","incomplete-dir-enabled":false,"lpd-enabled":false,"peer-limit-global":200,"peer-limit-per-torrent":50,"peer-port":51413,"peer-port-random-on-start":false,"pex-enabled":true,"port-forwarding-enabled":true,"queue-stalled-enabled":true,"queue-stalled-minutes":30,"rename-partial-files":true,"rpc-version":15,"rpc-version-minimum":1,"script-torrent-done-enabled":false,"script-torrent-done-filename":"/home/likemilk","seed-queue-enabled":false,"seed-queue-size":10,"seedRatioLimit":2,"seedRatioLimited":false,"speed-limit-down":100,"speed-limit-down-enabled":false,"speed-limit-up":100,"speed-limit-up-enabled":false,"start-added-torrents":true,"trash-original-torrent-files":false,"units":{"memory-bytes":1024,"memory-units":["KiB","MiB","GiB","TiB"],"size-bytes":1000,"size-units":["kB","MB","GB","TB"],"speed-bytes":1000,"speed-units":["kB/\ucd08","MB/\ucd08","GB/\ucd08","TB/\ucd08"]},"utp-enabled":true,"version":"2.84 (14307)"},"result":"success"}
+
+[DEBUG|transmissionWebAPI.py:108]2017-02-25 13:20:01,524 > <__main__.Connection object at 0x7f2f680eeb00>

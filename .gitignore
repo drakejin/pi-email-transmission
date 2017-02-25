@@ -1,3 +1,4 @@
 pi-imap-transmission
 src/imap/__pycache__
 src/modules/__pycache__
+logs

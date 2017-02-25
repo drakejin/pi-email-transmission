@@ -6,7 +6,7 @@ from urllib.error import HTTPError
 from urllib.request import urlopen as urlopen
 
 
-from logger import DJLogger
+from modules import DJLogger
 
 logger = DJLogger.getLogger()
 

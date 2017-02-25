@@ -14,4 +14,3 @@ ln -s `pyenv root`/versions/$PROJECT_NAME $PROJECT_HOME/$PROJECT_NAME
 
 pyenv shell $PROJECT_NAME
 pip install --upgrade pip
-
