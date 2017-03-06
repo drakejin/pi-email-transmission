@@ -4,7 +4,7 @@ build
 dist
 virtualenv
 pit/**/*/__pycache__
-logs
+logs/*
 
 # Default Setup
 config_dev.json
@@ -18,4 +18,4 @@ config_dev.json
 # Python egg metadata, regenerated from source files by setuptools
 /*.egg-info
 /*.egg
-
+/.egg
