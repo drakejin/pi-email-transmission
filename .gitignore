@@ -9,7 +9,8 @@ logs/*
 # Default Setup
 config_dev.json
 
-
+# symbolic link folder
+/pi-imap-transmission
 
 # Compiled Python Modules
 *.pyc
