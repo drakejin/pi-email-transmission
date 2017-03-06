@@ -31,7 +31,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'imaptransmission=pit.command_line:main'
+            'imaptransmission=pit.__main__:main'
         ],
     },
     test_suite='nose.collector',
