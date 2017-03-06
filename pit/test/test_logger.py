@@ -1,6 +1,6 @@
 from unittest import TestCase
 from pit.utils.logger import DJLogger
-from pit.command_line import main
+from pit.__main__ import main
 
 
 class TestPIT(TestCase):
