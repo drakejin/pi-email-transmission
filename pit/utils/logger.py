@@ -13,13 +13,17 @@ class DJLogger:
 
             if(env == 'tester'):
                 level = 'DEBUG'
-                filename = os.environ['PROJECT_HOME']+'/logs/'+env+'.log'
-
-#                os.remove(filename)
+                foldername = os.environ['PROJECT_HOME']+'/logs'
+                filename = foldername+'/'+env+'.log'
+                if (not os.path.exists(foldername)):
+                    os.makedirs(foldername)
             elif(env == 'develop'):
                 level = 'DEBUG'
-                filename = os.environ['PROJECT_HOME']+'/logs/'+env+'.log'
-#                os.remove(filename)
+                foldername = os.environ['PROJECT_HOME']+'/logs'
+                filename = foldername+'/'+env+'.log'
+                if (not os.path.exists(foldername)):
+                    os.makedirs(foldername)
+
             elif(env == 'product'):
                 level = 'ERROR'
                 filename = '/tmp/transNoty'
