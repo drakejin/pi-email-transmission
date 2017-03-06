@@ -4,7 +4,7 @@ build
 dist
 virtualenv
 pit/**/*/__pycache__
-logs
+logs/*
 
 # Default Setup
 config_dev.json

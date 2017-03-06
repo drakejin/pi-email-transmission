@@ -14,6 +14,7 @@ class DJLogger:
             if(env == 'tester'):
                 level = 'DEBUG'
                 filename = os.environ['PROJECT_HOME']+'/logs/'+env+'.log'
+
 #                os.remove(filename)
             elif(env == 'develop'):
                 level = 'DEBUG'

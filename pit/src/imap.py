@@ -4,14 +4,14 @@ import os
 import time
 from email import parser
 import email
-from logger import DJLogger
+from pit.utils.logger import DJLogger
 from transmission_rpc import TransmissionRpc
 
 logger = DJLogger.getLogger()
 
 logger.debug("read")
 
-with open(os.environ['PROJECT_HOME']+'/config.json') as configJson:
+with open(os.environ['PROJECT_HOME']+'/config_dev.json') as configJson:
     logger.debug(configJson)
     configData = json.load(configJson)
     logger.debug(configData)
