@@ -74,7 +74,9 @@ def run():
                 result, data = emailConnection.uid('fetch', uid, '(RFC822)')
                 seen = proc_email(data[0][1], uid.decode('UTF-8'))
                 if seen:
-                    result = emailConnection.uid('STORE', uid, '+FLAGS', '\\Seen')
+                    result = emailConnection.uid(
+                        'STORE', uid, '+FLAGS', '\\Seen'
+                    )
                     logger.debug(result)
             except Exception as e:
                 logger.debug(e)
