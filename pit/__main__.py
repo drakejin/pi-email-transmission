@@ -1,5 +1,6 @@
 import sys
 from pit.utils.logger import DJLogger
+from pit.src.service import PITService
 
 logger = DJLogger.getLogger()
 
@@ -7,34 +8,41 @@ logger = DJLogger.getLogger()
 def main():
     # help
     argv = sys.argv
+    service = PITService()
 
     if(len(argv) == 1):
-        logger.info('help')
+        print("Please insert any command")
+        service.help()
     elif(len(argv) == 2):
         cmd = argv[1]
         if(cmd == 'start'):
-            print('start')
+            service.start()
 
         elif(cmd == 'stop'):
-            print('stop')
+            service.stop()
 
         elif(cmd == 'restart'):
-            print('restart')
+            if(service.stop()):
+                service.start()
+            else:
+                service.stopForce()
 
         elif(cmd == 'status'):
-            print('status')
+            service.status()
 
         elif(cmd == 'test'):
-            print('test')
+            service.test()
 
         elif(cmd == 'help'):
-            print('help')
+            service.help()
+
         else:
             logger.error("Doesn't Exist command")
             print("Doesn't Exist command")
 
     else:
-        logger.error('exception')
+        print('')
+        logger.error("Don't need 2 more arguments")
 
 
 if __name__ == '__main__':
