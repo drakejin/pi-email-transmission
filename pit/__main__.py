@@ -2,7 +2,7 @@ import sys
 from pit.utils.logger import DJLogger
 from pit.src.service import PITService
 
-logger = DJLogger().getLogger()
+logger = DJLogger.getLogger()
 
 
 def main():
