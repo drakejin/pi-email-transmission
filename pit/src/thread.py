@@ -36,10 +36,10 @@ class PITThread(PITConfig):
                 for torrent in torrent_files:
                     if(trnsmsn_ctrl.add_torrent(torrent)):
                         IMAP_ctrl.send(torrent, 'add_complete')
-                        # 메일 읽음 표시를 해준다.
+                        # send seen flag and email what did success
                     else:
                         IMAP_ctrl.send(torrent, 'add_error')
-                        # 삭제하도록 메일하나를 보낸다.
+                        # send seen falg and email what has been occured email
 
                 # transmission checker [To delete completed download]
                 # will return type of list

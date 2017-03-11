@@ -40,7 +40,7 @@ class IMAPController:
                 msg = email.message_from_bytes(data[0][1])
                 for part in msg.walk():
                     if(part.get_content_type() == 'application/x-bittorrent'):
-                        # dict 형태로 만들어서 메일의uid값을 함께 보내주자.
+                        # send email's uid and payload
                         payload_list.append(part.get_payload())
 
             except Exception as e:
