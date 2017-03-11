@@ -1,0 +1,39 @@
+{
+    "torrent-get":{
+        "fields": [        
+            "id",       
+            "error",       
+            "errorString",       
+            "eta",       
+            "isFinished",       
+            "isStalled",       
+            "leftUntilDone",       
+            "metadataPercentComplete",       
+            "peersConnected",       
+            "peersGettingFromUs",       
+            "peersSendingToUs",       
+            "percentDone",       
+            "queuePosition",      
+            "rateDownload",       
+            "rateUpload",
+            "recheckProgress",
+            "seedRatioMode",
+            "seedRatioLimit",
+            "sizeWhenDone",
+            "status",
+            "trackers",
+            "downloadDir",
+            "uploadedEver",
+            "uploadRatio",
+            "webseedsSendingToUs"
+        ],
+        "ids": "recently-active"   
+    },
+   "session-get":{
+   
+   
+   } 
+
+
+
+}
