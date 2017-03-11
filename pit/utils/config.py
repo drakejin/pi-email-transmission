@@ -9,9 +9,12 @@ class PITConfig:
     field = None
 
     def __init__(self):
-        if(PITConfig.service is None):
-            with open(os.environ['PROJECT_HOME']+'/conf/service_dev.json') as conf:
-                PITConfig.service = json.load(conf)
+        if os.environ.get('TRAVIS_SERVICE', None) is None:
+            if(PITConfig.service is None):
+                with open(os.environ['PROJECT_HOME']+'/conf/service_dev.json') as conf:
+                    PITConfig.service = json.load(conf)
+        else:
+            PITConfig.service = json.load(os.environ['TRAVIS_SERVICE'])
 
         if(PITConfig.docs is None):
             with open(os.environ['PROJECT_HOME']+'/conf/docs.json') as conf:
