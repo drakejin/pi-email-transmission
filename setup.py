@@ -26,8 +26,7 @@ setup(
     keywords='torrent transmission rpc imap download bittorrent utorrent',
     packages=['pit'],
     # This is for develop yet, I will change this list
-    install_requires=[
-    ],
+    install_requires=[],
     entry_points={
         'console_scripts': [
             'imaptransmission=pit.__main__:main'

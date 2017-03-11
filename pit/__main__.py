@@ -2,7 +2,7 @@ import sys
 from pit.utils.logger import DJLogger
 from pit.src.service import PITService
 
-logger = DJLogger.getLogger()
+logger = DJLogger().getLogger()
 
 
 def main():
@@ -42,7 +42,7 @@ def main():
 
     else:
         print('')
-        logger.error("Don't need 2 more arguments")
+        logger.error("Don't need 2 more ")
 
 
 if __name__ == '__main__':
