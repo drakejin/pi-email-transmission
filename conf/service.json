@@ -3,13 +3,13 @@
     "email":{  
         "host" : "imap.naver.com",
         "port" : 993,
-        "input_folder" : "pi-torrent-noty",
-        "user" : "dydwls121200",
-        "password" : "choco2323!"
+        "folder" : "pi-torrent-noty",
+        "user" : "##########33",
+        "password" : "############"
     },
     "transmission":{
-        "user" : "likemilk",
-        "password" : "choco2323!",
+        "user" : "#############",
+        "password" : "###########",
         "host" : "http://localhost:9091"
     }
 }
