@@ -6,9 +6,12 @@ import time
 
 
 class PITThread(PITConfig):
+    config = None
+
     def __init__(self):
         PITConfig.__init__(self)
         self.interval_thread = PITThread.__IntervalThread()
+        PITThread.config = self.config
 
     def start(self):
         self.interval_thread.start()
@@ -21,13 +24,11 @@ class PITThread(PITConfig):
             threading.Thread.__init__(self)
 
         def run(self):
-            IMAP_ctrl = IMAPController(PITThread.config['email'])
-            trnsmsn_ctrl = TransmissionController(
-                PITThread.config['transmission']
-            )
+            IMAP_ctrl = IMAPController(PITThread.config)
+            trnsmsn_ctrl = TransmissionController(PITThread.config)
             while(True):
                 # set Interval sleep time
-                time.sleep(PITThread.config['check_interval'])
+                time.sleep(PITThread.config['service']['check_interval'])
 
                 # imap checker [To transport torrent file to transmission]
                 # will return type of list

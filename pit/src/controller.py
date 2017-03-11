@@ -1,21 +1,28 @@
+from urllib.request import Request
+from urllib.request import urlopen as urlopen
+from urllib.error import HTTPError
+
 import imaplib
 import email
+import base64
+import json
 
 
 class IMAPController:
     def __init__(self, config):
         self.config = config
-
         # get imap connection
         self.connection = imaplib.IMAP4_SSL(
-            self.config['host'], self.config['port']
+            self.config['service']['email']['host'],
+            self.config['service']['email']['port']
         )
         self.connection.login(
-            self.config['user'], self.config['password']
+            self.config['service']['email']['user'],
+            self.config['service']['email']['password']
         )
 
     def check(self):
-        self.connection.select(self.config['input_folder'])
+        self.connection.select(self.config['service']['email']['folder'])
         result, data = self.connection.uid('SEARCH', None, '(UNSEEN)')
         uids = data[0].split()
         payload_list = []
@@ -32,10 +39,10 @@ class IMAPController:
 
             except Exception as e:
                 print(e)
-        print(payload_list)
         return payload_list
 
     def send(self, torrent, cmd=None):
+        print('Email -- send --- =================================')
         if(cmd is None):
             print('send:[', cmd, ']')
         elif(cmd == 'dd'):
@@ -46,32 +53,79 @@ class IMAPController:
 
 class TransmissionController:
     def __init__(self, config):
-        print('TransmissionController-init')
-        self.config = config
-        auth = base64.encodestring(
-            ('%s:%s' % (self.user, self.password)).encode()
+        self.__config = config
+        self.__session_id = None
+        self.__auth = base64.encodestring(
+            (
+                '%s:%s' %
+                (
+                    self.__config['service']['transmission']['user'],
+                    self.__config['service']['transmission']['password']
+                )
+            ).encode()
         ).decode().replace('\n', '')
-        self.auth = auth
+        self.__get_session__()
 
-    def __request(self, method='torrent-get', req):
+    def __request__(self, method, arguments=None):
+        message = {"method": method, "arguments": arguments}
+        message = json.dumps(message).encode("utf-8")
+
+        req = Request(
+            "%s/transmission/rpc"
+            % (self.__config['service']['transmission']['host']), message)
         req.add_header("Content-Type", "application/json")
-        req.add_header("Authorization", "Basic %s" % self.auth)
+        req.add_header("Authorization", "Basic %s" % self.__auth)
 
-        if self.session_id:
-            request_obj.add_header(
-                "X-Transmission-Session-Id",
-                self.session_id
-            )
+        res = None
+        for i in range(3):
+            try:
+                if self.__session_id:
+                    req.add_header(
+                        "X-Transmission-Session-Id",
+                        self.__session_id
+                    )
+                res = urlopen(req)
+            except HTTPError as e:
+                if e.code == 409:
+                    self.__session_id = e.headers['X-Transmission-Session-Id']
+
+        res = json.loads(res.read().decode('utf-8'))
+        return res
+
+    def __get_session__(self):
+        # It just for getting the ' X-Transmission-Session-Id '
+        self.__request__('session-get')
 
     def check(self):
-        print('TransmissionController-check')
-        complete_torrent = ['cmplt-check-1', 'cmplt-check-2']
+        complete_torrent = []
+        method = 'torrent-get'
+        res = self.__request__(method, self.__config['field'][method])
+        if (res['result'] != 'success'):
+            raise HTTPError('transmission has occured an error at torrent-get')
+
+        for torrent in res['arguments']['torrents']:
+            if(torrent['percentDone'] is 1):
+                complete_torrent.append(torrent)
         return complete_torrent
 
-    def add_torrent(self, torrent):
+    def add_torrent(self, payload):
         print('TransmissionController-add_torrent')
-        return True
+        method = 'torrent-add'
+        res = self.__request__(method, {"metainfo": payload})
+        if(res['result'] != 'success'):
+            return False
+        else:
+            return True
 
     def delete(self, torrent):
-        print('TransmissionController-delete')
-        return True
+        method = 'torrent-remove'
+        res = self.__request__(method, {"id": torrent['id']})
+        if(res['result'] != 'success'):
+            return False
+        else:
+            return True
+
+
+'''
+
+'''

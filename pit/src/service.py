@@ -1,5 +1,4 @@
 from pit.utils.config import PITConfig
-from pit.utils.document import PITDocument
 from pit.src.thread import PITThread
 
 
@@ -22,4 +21,4 @@ class PITService(PITConfig):
         print('test')
 
     def help(self):
-        PITDocument().printHelp('usage')
+        print(self.config['docs']['help']['usage'])
