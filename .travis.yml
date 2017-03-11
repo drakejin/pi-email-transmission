@@ -14,4 +14,12 @@ install:
     "python setup.py install"
 
 script:
-    "python setup.py test"
+    - "export PROJECT_HOME=`pwd`"
+    - "export PROJECT_NAME=pi-imap-transmission"
+    #LOG_LEVE
+    #   develop
+    #   tester
+    #   product 
+    - "export LOG_LEVEL=develop"
+    - "python setup.py test"
+

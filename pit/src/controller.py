@@ -1,11 +1,17 @@
-from urllib.request import Request
-from urllib.request import urlopen as urlopen
-from urllib.error import HTTPError
-
+import sys
 import imaplib
 import email
 import base64
 import json
+
+if sys.version_info < (3,):
+    from urllib2 import Request
+    from urllib2 import HTTPError
+    from urllib2 import urlopen
+else:
+    from urllib.request import Request
+    from urllib.error import HTTPError
+    from urllib.request import urlopen as urlopen
 
 
 class IMAPController:

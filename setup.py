@@ -27,7 +27,6 @@ setup(
     packages=['pit'],
     # This is for develop yet, I will change this list
     install_requires=[
-        'IPython',
     ],
     entry_points={
         'console_scripts': [
