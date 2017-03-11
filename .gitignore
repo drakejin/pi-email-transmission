@@ -7,7 +7,7 @@ pit/**/*/__pycache__
 logs/*
 
 # Default Setup
-/conf/config_dev.json
+/conf/service_dev.json
 
 # symbolic link folder
 /pi-imap-transmission
