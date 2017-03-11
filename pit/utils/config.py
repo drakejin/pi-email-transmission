@@ -14,7 +14,9 @@ class PITConfig:
                 with open(os.environ['PROJECT_HOME']+'/conf/service_dev.json') as conf:
                     PITConfig.service = json.load(conf)
         else:
-            PITConfig.service = json.loads(os.environ['TRAVIS_SERVICE'])
+            print(os.environ['TRAVIS_SERVICE'])
+            PITConfig.service = json.loads(os.environ['TRAVIS_SERVICE'].replace("'", "\""))
+            print(PITConfig.service)
 
         if(PITConfig.docs is None):
             with open(os.environ['PROJECT_HOME']+'/conf/docs.json') as conf:
