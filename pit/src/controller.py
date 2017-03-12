@@ -295,7 +295,16 @@ class TransmissionController:
     def delete(self, torrent):
         method = 'torrent-remove'
         torrent_info = self.__torrent_info__(torrent['id'])
-        res = self.__request__(method, {"id": torrent['id']})
+        res = self.__request__(method, {"ids": torrent['id']})
+        if(res['result'] != 'success'):
+            return None
+        else:
+            return torrent_info
+
+    def pause(self, torrent):
+        method = 'torrent-stop'
+        torrent_info = self.__torrent_info__(torrent['id'])
+        res = self.__request__(method, {"ids": torrent['id']})
         if(res['result'] != 'success'):
             return None
         else:
