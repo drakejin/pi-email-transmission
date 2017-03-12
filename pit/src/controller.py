@@ -27,6 +27,12 @@ class IMAPController:
             self.config['service']['email']['password']
         )
 
+    def __send_flag__(self, uid, flag):
+        print('__send_flag email:', email, ', flag:', flag)
+
+    def __send_email__(self, email):
+        print('__send_email__ email:', email)
+
     def check(self):
         self.connection.select(self.config['service']['email']['folder'])
         result, data = self.connection.uid('SEARCH', None, '(UNSEEN)')
@@ -41,7 +47,12 @@ class IMAPController:
                 for part in msg.walk():
                     if(part.get_content_type() == 'application/x-bittorrent'):
                         # send email's uid and payload
-                        payload_list.append(part.get_payload())
+                        payload_list.append(
+                            {
+                                "payload": part.get_payload(),
+                                "uid": uid
+                            }
+                        )
 
             except Exception as e:
                 print(e)
@@ -78,7 +89,10 @@ class TransmissionController:
 
         req = Request(
             "%s/transmission/rpc"
-            % (self.__config['service']['transmission']['host']), message)
+            % (self.__config['service']['transmission']['host']),
+            message
+        )
+
         req.add_header("Content-Type", "application/json")
         req.add_header("Authorization", "Basic %s" % self.__auth)
 
@@ -114,7 +128,7 @@ class TransmissionController:
                 complete_torrent.append(torrent)
         return complete_torrent
 
-    def add_torrent(self, payload):
+    def add(self, payload):
         print('TransmissionController-add_torrent')
         method = 'torrent-add'
         res = self.__request__(method, {"metainfo": payload})

@@ -34,11 +34,11 @@ class PITThread(PITConfig):
                 # will return type of list
                 torrent_files = IMAP_ctrl.check()
                 for torrent in torrent_files:
-                    if(trnsmsn_ctrl.add_torrent(torrent)):
-                        IMAP_ctrl.send(torrent, 'add_complete')
+                    if(trnsmsn_ctrl.add(torrent['payload'])):
+                        IMAP_ctrl.send(torrent['uid'], 'add_complete')
                         # send seen flag and email what did success
                     else:
-                        IMAP_ctrl.send(torrent, 'add_error')
+                        IMAP_ctrl.send(torrent['uid'], 'add_error')
                         # send seen falg and email what has been occured email
 
                 # transmission checker [To delete completed download]
