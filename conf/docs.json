@@ -9,6 +9,21 @@
         ,"contact": 
               "  Contact Me \n    E-Mail : dydwls121200@gmail.com \n    Github : git@drake-jin/pi-imap-transmission \n  Special Thanks : '나','Me','Boku' \n  Licenses : WTF \n"
     }
-
-
+    ,"email":{
+        "add_success":{
+            "help":"subject has {name}, content has {name,downloadDir,sizeWhenDonw,freeSize,files}"
+            ,"subject":"[PET][Add_Success]{subject}"
+            ,"content":"<h2>PET Success for adding torrent on transmission</h2><ul><li><em>Torrent Name : </em> {name}</li><li><em>Downlaod Directory : </em> {downloadDir}</li><li><em>Size of download file when done : </em> {sizeWhenDone}</li><li><em>Downlaod Files:</em>{files}</li></ul>"                        
+            ,"files":"<div><em>{name}</em> | length: {length}</div>"
+        }
+        ,"add_fail":{
+        
+        }
+        ,"delete_success":{
+        
+        }
+        ,"delete_fail":{
+        
+        }
+    }
 }
