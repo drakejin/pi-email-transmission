@@ -34,6 +34,8 @@ class PITThread(PITConfig):
                 # will return type of list
                 torrent_files = IMAP_ctrl.check()
                 for torrent in torrent_files:
+                    # test code IMAP_ctrl.add_fail(torrent['uid'])
+
                     torrent_info = trnsmsn_ctrl.add(torrent['payload'])
                     if(torrent_info):
                         IMAP_ctrl.add_success(torrent_info, torrent['uid'])

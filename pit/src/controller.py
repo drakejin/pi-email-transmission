@@ -75,7 +75,6 @@ Subject: %s
                 result, data = self.IMAPconnection.uid(
                     'fetch', uid, '(RFC822)'
                 )
-                # message = data[0][1] ,mail_id = uid.decode('UTF-8')
                 msg = email.message_from_bytes(data[0][1])
                 for part in msg.walk():
                     if(part.get_content_type() == 'application/x-bittorrent'):
@@ -86,12 +85,10 @@ Subject: %s
                                 "uid": uid
                             }
                         )
-                        self.__send_seen_flag__(uid)
 
             except Exception as e:
                 print(e)
 
-        logger.debug(payload_list)
         return payload_list
 
     def add_success(self, torrent_info, uid):
@@ -124,28 +121,93 @@ Subject: %s
 
         self.__send_email__(email_form)
 
-    def add_fail(self, torrent_info, uid):
-        logger.debug('add_fail | torrent_info: ' + str(torrent_info))
+    def add_fail(self, uid):
         logger.debug('add_fail | uid: ' + str(uid))
         self.__send_seen_flag__(uid)
+
         email_form = self.config['docs']['email']['add_fail']
+        filenames = []
+        try:
+            result, data = self.IMAPconnection.uid(
+                'fetch', uid, '(RFC822)'
+            )
+            msg = email.message_from_bytes(data[0][1])
+            for part in msg.walk():
+                if(part.get_content_type() == 'application/x-bittorrent'):
+                    filenames.append(part.get_param('name'))
 
-        # something logic
+        except Exception as e:
+            print(e)
 
+        form_files = email_form['files']
+        file_list = []
+        for f in filenames:
+            file_list.append(form_files.replace("{file}", f))
+
+        content = email_form['content']
+        content = content.replace("{files}", "</br>".join(file_list))
+        print("149149149: ", "</br>".join(file_list))
+        email_form = IMAPController.email_format % (
+            self.config['service']['email']['user'],
+            self.config['service']['email']['user'],
+            email_form['subject'],
+            content
+        )
         self.__send_email__(email_form)
 
     def delete_fail(self, torrent_info):
         logger.debug('delete_fail | torrent_info: ' + str(torrent_info))
         email_form = self.config['docs']['email']['delete_fail']
-        # something logic
+        content = email_form['content']
+        files = email_form['files']
+        file_list = []
+
+        for f in torrent_info['files']:
+            file_list.append(
+                files.replace("{name}", f['name']).replace(
+                    "{length}", str(f['length']))
+            )
+
+        print("</br>".join(file_list))
+        content = content.replace("{name}", torrent_info['name'])\
+            .replace("{downloadDir}", torrent_info['downloadDir'])\
+            .replace("{sizeWhenDone}", str(torrent_info['sizeWhenDone']))\
+            .replace("{files}", "</br>".join(file_list))
+
+        email_form = IMAPController.email_format % (
+            self.config['service']['email']['user'],
+            self.config['service']['email']['user'],
+            email_form['subject'].replace('{subject}', torrent_info['name']),
+            content
+        )
 
         self.__send_email__(email_form)
 
     def delete_success(self, torrent_info):
         logger.debug('delete_success | torrent_info: ' + str(torrent_info))
         email_form = self.config['docs']['email']['delete_success']
-        # something logic
+        content = email_form['content']
+        files = email_form['files']
+        file_list = []
 
+        for f in torrent_info['files']:
+            file_list.append(
+                files.replace("{name}", f['name']).replace(
+                    "{length}", str(f['length']))
+            )
+
+        print("</br>".join(file_list))
+        content = content.replace("{name}", torrent_info['name'])\
+            .replace("{downloadDir}", torrent_info['downloadDir'])\
+            .replace("{sizeWhenDone}", str(torrent_info['sizeWhenDone']))\
+            .replace("{files}", "</br>".join(file_list))
+
+        email_form = IMAPController.email_format % (
+            self.config['service']['email']['user'],
+            self.config['service']['email']['user'],
+            email_form['subject'].replace('{subject}', torrent_info['name']),
+            content
+        )
         self.__send_email__(email_form)
 
 
@@ -194,7 +256,6 @@ class TransmissionController:
         return res
 
     def __get_session__(self):
-        # It just for getting the ' X-Transmission-Session-Id '
         self.__request__('session-get')
 
     def __torrent_info__(self, torrent_id):
@@ -217,7 +278,6 @@ class TransmissionController:
         return complete_torrent
 
     def add(self, payload):
-        print('TransmissionController-add_torrent')
         method = 'torrent-add'
         res = self.__request__(method, {"metainfo": payload})
         if(res['result'] != 'success'):
@@ -234,11 +294,12 @@ class TransmissionController:
 
     def delete(self, torrent):
         method = 'torrent-remove'
+        torrent_info = self.__torrent_info__(torrent['id'])
         res = self.__request__(method, {"id": torrent['id']})
         if(res['result'] != 'success'):
-            return False
+            return None
         else:
-            return True
+            return torrent_info
 
 
 '''
