@@ -2,7 +2,7 @@ import imaplib
 import json
 import os
 import time
-from email import parser
+# from email import parser
 import email
 from pit.utils.logger import DJLogger
 from transmission_rpc import TransmissionRpc
@@ -85,7 +85,3 @@ def run():
 
 
 run()
-
-
-
-

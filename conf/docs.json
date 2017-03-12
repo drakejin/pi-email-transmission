@@ -9,6 +9,28 @@
         ,"contact": 
               "  Contact Me \n    E-Mail : dydwls121200@gmail.com \n    Github : git@drake-jin/pi-imap-transmission \n  Special Thanks : '나','Me','Boku' \n  Licenses : WTF \n"
     }
-
-
+    ,"email":{
+        "add_success":{
+            "help":"subject has {name}, content has {name,downloadDir,sizeWhenDonw,files}"
+            ,"subject":"[PET][Add Success]{subject}"
+            ,"content":"<h2>PET Success for adding torrent on transmission</h2><ul><li><em>Torrent Name : </em> {name}</li><li><em>Downlaod Directory : </em> {downloadDir}</li><li><em>Size of download file when done : </em> {sizeWhenDone}</li><li><em>Downlaod Files:</em>{files}</li></ul><h2>Help: dydwls121200@gmail.com</h2>"                        
+            ,"files":"<div><em>{name}</em>  {length: {length} }</div>"
+        }
+        ,"add_fail":{
+            "help":"content has {files}, files has {file}" 
+            ,"subject":"[PET][Add Fail]Opps! Occured errors "
+            ,"content":"<h2>While adding download queue Transmission web controller has occured errors.</h2><em> Please check tranmission queue.</em> This program don't know yet whether few of files were barely successed.<h4>There was an error of your attachments or System Environment </h4><ul>{files}</ul> <h2>Help: dydwls121200@gmail.com</h2>"
+            ,"files":"<li>{file}</li>"
+        }
+        ,"delete_success":{
+              "subject":"[PET][Completely download & Delete completed] Contratulation!! Downloading is done! "
+            ,"content":"<h2>PET deleted completely downloaded torrent.</h2><em>If you use Dropbox and Google Drive, PET recommand to change download path for there service</em><h2> Description </h2><ul><li><em>Name : </em>{name}</li><li><em>Download Directory : </em>{downloadDir}</li><li><em>Size of download file When done : </em> {sizeWhenDone}</li><li><em>Files</em>{files}</li></ul><h2> Help : dydwls121200@gmail.com </h2>"
+            ,"files":"<div><em>{name}</em> | size :  {bytesCompleted} </div>"
+      }
+        ,"delete_fail":{
+             "subject":"[PET][Completely download. but, didn't delete to completed torrent] Opps!! Occured an error!!"
+            ,"content":"<h2>torrent is completely downloaded. but, PET can't delete torrent in download queue</h2><em>If you use Dropbox and Google Drive, PET recommand to change download path for there service</em><h2> Description </h2><ul><li><em>Name : </em>{name}</li><li><em>Download Directory : </em>{downloadDir}</li><li><em>Size of download file When done : </em> {sizeWhenDone}</li><li><em>Files</em>{files}</li></ul><h2> Help : dydwls121200@gmail.com </h2>"
+            ,"files":"<div><em>{name}</em> | size :  {bytesCompleted} </div>"
+        }
+    }
 }

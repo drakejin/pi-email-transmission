@@ -1,10 +1,11 @@
 {
     "check_interval" : 5,
-    "email":{  
+    "email":{
+        "smtp" : "smtp.naver.com:465",  
         "host" : "imap.naver.com",
         "port" : 993,
         "folder" : "pi-torrent-noty",
-        "user" : "##########33",
+        "user" : "##########@naver.com",
         "password" : "############"
     },
     "transmission":{

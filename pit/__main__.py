@@ -42,7 +42,7 @@ def main():
 
     else:
         print('')
-        logger.error("Don't need 2 more arguments")
+        logger.error("Don't need 2 more ")
 
 
 if __name__ == '__main__':

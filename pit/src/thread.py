@@ -34,21 +34,24 @@ class PITThread(PITConfig):
                 # will return type of list
                 torrent_files = IMAP_ctrl.check()
                 for torrent in torrent_files:
-                    if(trnsmsn_ctrl.add_torrent(torrent)):
-                        IMAP_ctrl.send(torrent, 'add_complete')
-                        # 메일 읽음 표시를 해준다.
+                    # test code IMAP_ctrl.add_fail(torrent['uid'])
+
+                    torrent_info = trnsmsn_ctrl.add(torrent['payload'])
+                    if(torrent_info):
+                        IMAP_ctrl.add_success(torrent_info, torrent['uid'])
+                        # send seen flag and email what did success
                     else:
-                        IMAP_ctrl.send(torrent, 'add_error')
-                        # 삭제하도록 메일하나를 보낸다.
+                        IMAP_ctrl.add_fail(torrent['uid'])
+                        # send seen falg and email what has been occured email
 
                 # transmission checker [To delete completed download]
                 # will return type of list
                 completed_list = trnsmsn_ctrl.check()
                 for completed in completed_list:
                     if(trnsmsn_ctrl.delete(completed)):
-                        IMAP_ctrl.send(completed, 'delete_complete')
+                        IMAP_ctrl.delete_success(completed)
                     else:
-                        IMAP_ctrl.send(completed, 'delete_error')
+                        IMAP_ctrl.delete_fail(completed)
 
 
 '''

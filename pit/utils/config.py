@@ -9,9 +9,14 @@ class PITConfig:
     field = None
 
     def __init__(self):
-        if(PITConfig.service is None):
-            with open(os.environ['PROJECT_HOME']+'/conf/service_dev.json') as conf:
-                PITConfig.service = json.load(conf)
+        if os.environ.get('TRAVIS_SERVICE', None) is None:
+            if(PITConfig.service is None):
+                with open(os.environ['PROJECT_HOME']+'/conf/service_dev.json') as conf:
+                    PITConfig.service = json.load(conf)
+        else:
+            print(os.environ['TRAVIS_SERVICE'])
+            PITConfig.service = json.loads(os.environ['TRAVIS_SERVICE'].replace("'", "\""))
+            print(PITConfig.service)
 
         if(PITConfig.docs is None):
             with open(os.environ['PROJECT_HOME']+'/conf/docs.json') as conf:
@@ -25,6 +30,7 @@ class PITConfig:
         self.__dict__['config']['service'] = PITConfig.service
         self.__dict__['config']['docs'] = PITConfig.docs
         self.__dict__['config']['field'] = PITConfig.field
+
 
 '''
 Hello
