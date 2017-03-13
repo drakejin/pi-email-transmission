@@ -1,17 +1,17 @@
-from pit.utils.config import PITConfig
-from pit.src.controller import IMAPController
-from pit.src.controller import TransmissionController
+from pet.utils.config import PETConfig
+from pet.src.controller import MailController
+from pet.src.controller import TransmissionController
 import threading
 import time
 
 
-class PITThread(PITConfig):
+class PETThread(PETConfig):
     config = None
 
     def __init__(self):
-        PITConfig.__init__(self)
-        self.interval_thread = PITThread.__IntervalThread()
-        PITThread.config = self.config
+        PETConfig.__init__(self)
+        self.interval_thread = PETThread.__IntervalThread()
+        PETThread.config = self.config
 
     def start(self):
         self.interval_thread.start()
@@ -24,24 +24,24 @@ class PITThread(PITConfig):
             threading.Thread.__init__(self)
 
         def run(self):
-            IMAP_ctrl = IMAPController(PITThread.config)
-            trnsmsn_ctrl = TransmissionController(PITThread.config)
+            mail_ctrl = MailController(PETThread.config)
+            trnsmsn_ctrl = TransmissionController(PETThread.config)
             while(True):
                 # set Interval sleep time
-                time.sleep(PITThread.config['service']['check_interval'])
-
-                # imap checker [To transport torrent file to transmission]
+                time.sleep(PETThread.config['service']['check_interval'])
+                print('------------Yeah----------------')
+                # imap checker [To t`ransport torrent file to transmission]
                 # will return type of list
-                torrent_files = IMAP_ctrl.check()
+                torrent_files = mail_ctrl.check()
                 for torrent in torrent_files:
                     # test code IMAP_ctrl.add_fail(torrent['uid'])
-
+                    print ('Yeap? ')
                     torrent_info = trnsmsn_ctrl.add(torrent['payload'])
                     if(torrent_info):
-                        IMAP_ctrl.add_success(torrent_info, torrent['uid'])
+                        mail_ctrl.add_success(torrent_info, torrent['uid'])
                         # send seen flag and email what did success
                     else:
-                        IMAP_ctrl.add_fail(torrent['uid'])
+                        mail_ctrl.add_fail(torrent['uid'])
                         # send seen falg and email what has been occured email
 
                 # transmission checker [To delete completed download]
@@ -49,9 +49,9 @@ class PITThread(PITConfig):
                 completed_list = trnsmsn_ctrl.check()
                 for completed in completed_list:
                     if(trnsmsn_ctrl.delete(completed)):
-                        IMAP_ctrl.delete_success(completed)
+                        mail_ctrl.delete_success(completed)
                     else:
-                        IMAP_ctrl.delete_fail(completed)
+                        mail_ctrl.delete_fail(completed)
 
 
 '''
