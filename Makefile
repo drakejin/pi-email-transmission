@@ -1,5 +1,6 @@
- install: 
-	- pip uninstall pit
+ 
+install: 
+	- pip uninstall pet
 	- pip install .
 	- pip install -e .
 clean:

@@ -7,12 +7,12 @@ def readme():
 
 
 setup(
-    name='pit',
+    name='pet',
     version='0.0.1',
     description='This program or lib can download torrent file through'
     + 'email account and send the torrent file to transmission web controller',
     long_description=readme(),
-    url='http://github.com/drake-jin/pi-imap-transmission',
+    url='http://github.com/drake-jin/pi-email-transmission',
     author='drakejin',
     author_email='dydwls121200@gmail.com',
     license='MIT',
@@ -24,12 +24,12 @@ setup(
     ],
     include_package_data=True,
     keywords='torrent transmission rpc imap download bittorrent utorrent',
-    packages=['pit'],
+    packages=['pet'],
     # This is for develop yet, I will change this list
     install_requires=[],
     entry_points={
         'console_scripts': [
-            'imaptransmission=pit.__main__:main'
+            'pet=pet.__main__:main'
         ],
     },
     test_suite='nose.collector',

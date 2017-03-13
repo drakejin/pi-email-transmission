@@ -1,9 +1,8 @@
 import sys
-import imaplib
-import email
 import base64
 import json
 
+from pet.utils import Logger
 if sys.version_info < (3,):
     from urllib2 import Request
     from urllib2 import HTTPError
@@ -13,59 +12,7 @@ else:
     from urllib.error import HTTPError
     from urllib.request import urlopen as urlopen
 
-
-class IMAPController:
-    def __init__(self, config):
-        self.config = config
-        # get imap connection
-        self.connection = imaplib.IMAP4_SSL(
-            self.config['service']['email']['host'],
-            self.config['service']['email']['port']
-        )
-        self.connection.login(
-            self.config['service']['email']['user'],
-            self.config['service']['email']['password']
-        )
-
-    def __send_flag__(self, uid, flag):
-        print('__send_flag email:', email, ', flag:', flag)
-
-    def __send_email__(self, email):
-        print('__send_email__ email:', email)
-
-    def check(self):
-        self.connection.select(self.config['service']['email']['folder'])
-        result, data = self.connection.uid('SEARCH', None, '(UNSEEN)')
-        uids = data[0].split()
-        payload_list = []
-
-        for uid in uids:
-            try:
-                result, data = self.connection.uid('fetch', uid, '(RFC822)')
-                # message = data[0][1] ,mail_id = uid.decode('UTF-8')
-                msg = email.message_from_bytes(data[0][1])
-                for part in msg.walk():
-                    if(part.get_content_type() == 'application/x-bittorrent'):
-                        # send email's uid and payload
-                        payload_list.append(
-                            {
-                                "payload": part.get_payload(),
-                                "uid": uid
-                            }
-                        )
-
-            except Exception as e:
-                print(e)
-        return payload_list
-
-    def send(self, torrent, cmd=None):
-        print('Email -- send --- =================================')
-        if(cmd is None):
-            print('send:[', cmd, ']')
-        elif(cmd == 'dd'):
-            pass
-        else:
-            print('send:[', cmd, ']')
+logger = Logger.getLogger()
 
 
 class TransmissionController:
@@ -113,8 +60,14 @@ class TransmissionController:
         return res
 
     def __get_session__(self):
-        # It just for getting the ' X-Transmission-Session-Id '
         self.__request__('session-get')
+
+    def __torrent_info__(self, torrent_id):
+        method = 'torrent-get'
+        field = self.__config['field'][method]
+        field['ids'] = [torrent_id, ]
+        print('203 : ', field)
+        return self.__request__(method, field)['arguments']['torrents'][0]
 
     def check(self):
         complete_torrent = []
@@ -129,21 +82,38 @@ class TransmissionController:
         return complete_torrent
 
     def add(self, payload):
-        print('TransmissionController-add_torrent')
+        print("add")
         method = 'torrent-add'
         res = self.__request__(method, {"metainfo": payload})
         if(res['result'] != 'success'):
-            return False
+            return None
         else:
-            return True
+            torrent = res['arguments'].get('torrent-added', None)
+            torrent_id = 0
+            if torrent is not None:
+                torrent_id = torrent['id']
+            else:
+                torrent_id = res['arguments']['torrent-duplicate']['id']
+
+            return self.__torrent_info__(torrent_id)
 
     def delete(self, torrent):
         method = 'torrent-remove'
-        res = self.__request__(method, {"id": torrent['id']})
+        torrent_info = self.__torrent_info__(torrent['id'])
+        res = self.__request__(method, {"ids": torrent['id']})
         if(res['result'] != 'success'):
-            return False
+            return None
         else:
-            return True
+            return torrent_info
+
+    def pause(self, torrent):
+        method = 'torrent-stop'
+        torrent_info = self.__torrent_info__(torrent['id'])
+        res = self.__request__(method, {"ids": torrent['id']})
+        if(res['result'] != 'success'):
+            return None
+        else:
+            return torrent_info
 
 
 '''
