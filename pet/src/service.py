@@ -1,12 +1,12 @@
-from pit.utils.config import PITConfig
-from pit.src.thread import PITThread
+from pet.utils.config import PETConfig
+from pet.src.thread import PETThread
 
 
-class PITService(PITConfig):
+class PETService(PETConfig):
     def __init__(self):
         # 'config' is in self.__dict__
-        PITConfig.__init__(self)
-        self.thread = PITThread()
+        PETConfig.__init__(self)
+        self.thread = PETThread()
 
     def start(self):
         self.thread.start()

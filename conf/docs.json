@@ -2,12 +2,12 @@
     "NOTICE": "Do not change this file. Finally, This docs will be help you."
     ,"help":{
         "first" : 
-              "If you are first user about this program, 'imaptransmission help'"
+              "If you are first user about this program, 'pet help'"
         
         ,"usage": 
-              "\nWelcome to PIT [raspberry-'P'i 'I'MAP 'T'ransmission] \n\n  Usage : imaptransmission [command argument]\n  Description : This CLI program just need only one arguemnt \n  Command Arguments \n    start : Check folder on your email account each 5 second \n            and Get torrent files, The files will be transport to transmission \n    stop : Stop to check folder on your email account \n    status : Print out this program status what dead or alive and running status \n    restart : run stop and start. It's simple \n    help : Print out how to usage \n    test : If you first user about this program, \n            This command Check your modified configurations \n "   
+              "\nWelcome to PET [raspberry-'P'i 'E'mail 'T'ransmission] \n\n  Usage : pet [command argument]\n  Description : This CLI program just need only one arguemnt \n  Command Arguments \n    start : Check folder on your email account each 5 second \n            and Get torrent files, The files will be transport to transmission \n    stop : Stop to check folder on your email account \n    status : Print out this program status what dead or alive and running status \n    restart : run stop and start. It's simple \n    help : Print out how to usage \n    test : If you first user about this program, \n            This command Check your modified configurations \n "   
         ,"contact": 
-              "  Contact Me \n    E-Mail : dydwls121200@gmail.com \n    Github : git@drake-jin/pi-imap-transmission \n  Special Thanks : '나','Me','Boku' \n  Licenses : WTF \n"
+              "  Contact Me \n    E-Mail : dydwls121200@gmail.com \n    Github : git@drake-jin/pi-email-transmission \n  Special Thanks : '나','Me','Boku' \n  Licenses : WTF \n"
     }
     ,"email":{
         "add_success":{

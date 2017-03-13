@@ -1,5 +1,5 @@
 # Auto generates
-pit.egg-info
+pet.egg-info
 build
 dist
 virtualenv
@@ -10,7 +10,7 @@ logs/*
 /conf/service_dev.json
 
 # symbolic link folder
-/pi-imap-transmission
+/pi-email-transmission
 
 # Compiled Python Modules
 *.pyc
