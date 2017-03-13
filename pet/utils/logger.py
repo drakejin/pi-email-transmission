@@ -4,8 +4,8 @@ import shutil
 import os
 
 
-class DJLogger:
-    class __DJLogger:
+class Logger:
+    class __Logger:
         def getLogger(purpose=None):
             ''' Need to set 2 of OS Enviro value $PROJECT_ENV $PROJECT_HOME '''
 
@@ -69,8 +69,8 @@ class DJLogger:
     instance = None
 
     def getLogger(purpose=None):
-        if(DJLogger.instance):
-            DJLogger.instance
+        if(Logger.instance):
+            Logger.instance
         else:
-            DJLogger.instance = DJLogger.__DJLogger.getLogger(purpose)
-        return DJLogger.instance
+            Logger.instance = Logger.__Logger.getLogger(purpose)
+        return Logger.instance

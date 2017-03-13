@@ -1,14 +1,14 @@
 import sys
-from pit.utils.logger import DJLogger
-from pit.src.service import PITService
+from pet.utils import Logger
+from pet.src import PETService
 
-logger = DJLogger.getLogger()
+logger = Logger.getLogger()
 
 
 def main():
     # help
     argv = sys.argv
-    service = PITService()
+    service = PETService()
 
     if(len(argv) == 1):
         print("Please insert any command")
