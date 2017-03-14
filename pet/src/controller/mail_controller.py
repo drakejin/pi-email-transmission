@@ -21,9 +21,10 @@ Subject: %s
     def __init__(self, config):
         self.config = config
         # get imap connection
+        imap = self.config['service']['email']['imap'].split(':')
         self.IMAPconnection = imaplib.IMAP4_SSL(
-            self.config['service']['email']['host'],
-            self.config['service']['email']['port']
+            imap[0],
+            imap[1]
         )
         self.IMAPconnection.login(
             self.config['service']['email']['user'],

@@ -2,15 +2,15 @@
 
 # To do list
  
-  1. Make this project Available
+  1. Make this project Available until 1.0.0v
   2. Make Transmission API using web controller.
 
-# pi-imap-transmission  
+# pi-email-transmission[PET] 
 
  - This program needs to set up two serivce. Email service and Transmission's Web Controller
- - It will be make cool if you download any files on Raspberry-pi transmission 
+ - It will be make cool if you download any files on Raspberry-pi through transmission 
  - This program's all about feature depend on Email service and Transmission.
- - Simply say about this. It just connection Email service and transmission web controller
+ - Simply say about this. It just connect Email service and transmission web controller
 
 # Motivate
 
@@ -18,9 +18,9 @@
 
 # Recommand
    
-1. Basically, This program is designed for reducing laptop resources. Therefore i recommand to run this program on *raspberry-pi*.
+1. Basically, This program is designed for reducing laptop resources. Therefore, I recommand to run this program on *raspberry-pi*.
 2. Use this program with *Dropbox* or *GoogleDrive* to access your downloaded media files. 
-3. If you can use E-Mail notification service on your smartphone. Use it. 
+3. If you can use E-Mail notification service on your smartphone Use it. 
 
 Therefore, Security problem will be resolved by Big Friends's Service.
 
@@ -30,42 +30,43 @@ Therefore, Security problem will be resolved by Big Friends's Service.
 1. Set up transmission web controller setting
 
     - If you use Dropbox or GoogleDrive. redirect directory to there.
-    - Must check you have account information and host,port
+    - Must check you have account information and host, port
 
-2. Check your e-mail account available IMAP Protocol
+2. Check your e-mail account available IMAP and SMTP Protocol
     
-    - This application need to transport through IMAP Protocol.
-    - Therefore, you must set up IMAP Protocol available on you email account.
+    - This application need to transport through IMAP, SMTP Protocol.
+    - Therefore, you must set up IMAP and SMTP protocol available on you email account.
 
-3. Set up *pi-imap-transmission*'s config.json file
+3. Set up *pi-email-transmission*'s service.json file
 
   ``` js
-// config.json
+// service.json
 {
     "check_interval":10,
     "email":{
-        "host" : "imap.naver.com",
-        "port" : "993",
+        "imap" : "imap.gmail.com:993",
+        "smtp" : "smpt.gmail.com:465"
         "folder" : "pi-imap-transmission",
-        "user" : {user_id},
-        "password" : "{user_password}"
+        "user" : "{email_id}@gmail.com",
+        "password" : "{email_password}"
     },
     "transmission":{
-        "user":"likemilk",
-        "password":"choco2323!",
+        "user":"{trnsmsn_id}",
+        "password":"{trnsmsn_passwd}",
         "host":"http://localhost:9091"
     }
 }
   ```
 
-4. Finally, You can check correct setting about this program when you execute the command that *'imaptransmission test'*
+4. Finally, You can check correct setting about this program when you execute the command that *'pet test'*
 
-
+> $ pet test
+> # Have to finish setting Configurations! 
 
 # Install 
 
  ``` bash
-$ git clone https://github.com/drake-jin/pi-imap-transmission
+$ git clone https://github.com/drake-jin/pi-email-transmission
 $ make install
  ```
 
