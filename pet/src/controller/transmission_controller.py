@@ -6,10 +6,12 @@ from pet.utils import Logger
 if sys.version_info < (3,):
     from urllib2 import Request
     from urllib2 import HTTPError
+    from urllib2 import URLError
     from urllib2 import urlopen
 else:
     from urllib.request import Request
     from urllib.error import HTTPError
+    from urllib.error import URLError
     from urllib.request import urlopen as urlopen
 
 logger = Logger.getLogger()
@@ -55,6 +57,9 @@ class TransmissionController:
             except HTTPError as e:
                 if e.code == 409:
                     self.__session_id = e.headers['X-Transmission-Session-Id']
+            except URLError as e:
+                logger.debug('Please check Transmission Web Controller turn on!')
+                sys.exit('Please check Transmission Web Controller turn on!')
 
         res = json.loads(res.read().decode('utf-8'))
         return res
