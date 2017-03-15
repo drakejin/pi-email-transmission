@@ -11,7 +11,7 @@ class PETConfig:
     def __init__(self):
         if os.environ.get('TRAVIS_SERVICE', None) is None:
             if(PETConfig.service is None):
-                with open(os.environ['PROJECT_HOME']+'/conf/service.json') as conf:
+                with open(os.environ['PROJECT_HOME']+'/conf/service_dev.json') as conf:
                     PETConfig.service = json.load(conf)
         else:
             print(os.environ['TRAVIS_SERVICE'])
