@@ -1,6 +1,7 @@
 import sys
 from pet.utils import Logger
 from pet.src import PETService
+from pet.src import PETDaemon
 
 logger = Logger.getLogger()
 
@@ -8,6 +9,7 @@ logger = Logger.getLogger()
 def main():
     # help
     argv = sys.argv
+
     service = PETService()
 
     if(len(argv) == 1):
@@ -41,7 +43,7 @@ def main():
             print("Doesn't Exist command")
 
     else:
-        print('')
+        logger.debug("Usage: {}start|stop|restart|status".format(sys.argv[0]))
         logger.error("Don't need 2 more ")
 
 
