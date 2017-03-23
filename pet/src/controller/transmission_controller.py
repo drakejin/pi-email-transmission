@@ -3,6 +3,8 @@ import base64
 import json
 
 from pet.utils import Logger
+from pet.utils.config import PETConfig
+from pet.utils.config import PETContext
 if sys.version_info < (3,):
     from urllib2 import Request
     from urllib2 import HTTPError
@@ -17,16 +19,16 @@ else:
 logger = Logger.getLogger()
 
 
-class TransmissionController:
-    def __init__(self, config):
-        self.__config = config
+class TransmissionController(PETConfig):
+    def __init__(self):
+        PETConfig.__init__(self)
         self.__session_id = None
         self.__auth = base64.encodestring(
             (
                 '%s:%s' %
                 (
-                    self.__config['service']['transmission']['user'],
-                    self.__config['service']['transmission']['password']
+                    self.config['transmission']['user'],
+                    self.config['transmission']['password']
                 )
             ).encode()
         ).decode().replace('\n', '')
@@ -38,7 +40,7 @@ class TransmissionController:
 
         req = Request(
             "%s/transmission/rpc"
-            % (self.__config['service']['transmission']['host']),
+            % (self.config['transmission']['host']),
             message
         )
 
@@ -54,6 +56,8 @@ class TransmissionController:
                         self.__session_id
                     )
                 res = urlopen(req)
+                if res:
+                    break
             except HTTPError as e:
                 if e.code == 409:
                     self.__session_id = e.headers['X-Transmission-Session-Id']
@@ -69,7 +73,7 @@ class TransmissionController:
 
     def __torrent_info__(self, torrent_id):
         method = 'torrent-get'
-        field = self.__config['field'][method]
+        field = PETContext.TRNS_FIELD[method]
         field['ids'] = [torrent_id, ]
         print('203 : ', field)
         return self.__request__(method, field)['arguments']['torrents'][0]
@@ -77,7 +81,7 @@ class TransmissionController:
     def check(self):
         complete_torrent = []
         method = 'torrent-get'
-        res = self.__request__(method, self.__config['field'][method])
+        res = self.__request__(method, PETContext.TRNS_FIELD[method])
         if (res['result'] != 'success'):
             raise HTTPError('transmission has occured an error at torrent-get')
 

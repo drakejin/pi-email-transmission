@@ -1,8 +1,7 @@
 import sys
 from pet.utils import Logger
 from pet.src import PETService
-from pet.src import PETDaemon
-
+from pet.utils.config import PETContext
 logger = Logger.getLogger()
 
 
@@ -13,8 +12,7 @@ def main():
     service = PETService()
 
     if(len(argv) == 1):
-        print("Please insert any command")
-        service.help()
+        print(PETContext.HELP['wrong'])
     elif(len(argv) == 2):
         cmd = argv[1]
         if(cmd == 'start'):
@@ -24,10 +22,7 @@ def main():
             service.stop()
 
         elif(cmd == 'restart'):
-            if(service.stop()):
-                service.start()
-            else:
-                service.stopForce()
+            service.restart()
 
         elif(cmd == 'status'):
             service.status()
@@ -36,15 +31,12 @@ def main():
             service.test()
 
         elif(cmd == 'help'):
-            service.help()
-
+            print(PETContext.HELP['usage'])
         else:
-            logger.error("Doesn't Exist command")
-            print("Doesn't Exist command")
+            print(PETContext.HELP['wrong'])
 
     else:
-        logger.debug("Usage: {}start|stop|restart|status".format(sys.argv[0]))
-        logger.error("Don't need 2 more ")
+        print(PETContext.HELP['wrong'])
 
 
 if __name__ == '__main__':
