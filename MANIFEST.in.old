@@ -1,6 +1,8 @@
 include MANIFEST.in
 include README.md
 include Makefile
-include config.json
-include pit
+include conf
 include logs
+include docs
+include .pep8
+include .env

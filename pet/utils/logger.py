@@ -1,44 +1,23 @@
 import logging
 import logging.handlers
-import shutil
 import os
+
+from pet.utils.config import PETConfig
+from pet.utils.config import PETContext
 
 
 class Logger:
     class __Logger:
         def getLogger(purpose=None):
             ''' Need to set 2 of OS Enviro value $PROJECT_ENV $PROJECT_HOME '''
-
-            env = purpose and purpose or os.environ['LOG_LEVEL']
-
-            if(env == 'tester'):
-                level = 'DEBUG'
-                foldername = os.environ['PROJECT_HOME']+'/logs'
-                filename = foldername+'/'+env+'.log'
-                if (not os.path.exists(foldername)):
-                    os.makedirs(foldername)
-            elif(env == 'develop'):
-                level = 'DEBUG'
-                foldername = os.environ['PROJECT_HOME']+'/logs'
-                filename = foldername+'/'+env+'.log'
-                if (not os.path.exists(foldername)):
-                    os.makedirs(foldername)
-
-            elif(env == 'product'):
-                level = 'ERROR'
-                filename = '/tmp/transNoty'
-
-                try:
-                    shutil.rmtree(filename)
-                except OSError:
-                    pass
-
-                if not os.path.exists(filename):
-                    os.makedirs(filename)
-
-                filename = filename + '/log'
-            else:
-                os._exit(1)
+            config = PETConfig().config
+            level = purpose and purpose or config['log_level']
+            home = config['pet_home']
+            foldername = home+'/logs'
+            filename = foldername+'/'+level+'.log'
+            if (not os.path.exists(foldername)):
+                print(foldername)
+                os.makedirs(foldername)
 
             fileHandler = logging.handlers.TimedRotatingFileHandler(
                 filename,
