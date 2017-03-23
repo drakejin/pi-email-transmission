@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name='pet',
-    version='0.0.1',
+    version='0.1.0',
     description='This program or lib can download torrent file through'
     + 'email account and send the torrent file to transmission web controller',
     long_description=readme(),
