@@ -37,12 +37,14 @@ Therefore, Security problem will be resolved by Big Friends's Service.
     - This application need to transport through IMAP, SMTP Protocol.
     - Therefore, you must set up IMAP and SMTP protocol available on you email account.
 
-3. Set up *pi-email-transmission*'s service.json file
+3. Set up *pi-email-transmission*'s config.json file
 
   ``` js
-// service.json
+// config.json
 {
     "check_interval":10,
+    "pet_home":"/home/likemilk/workspace/pi-email-transmission",
+    "log_level":"DEBUG",
     "email":{
         "imap" : "imap.gmail.com:993",
         "smtp" : "smpt.gmail.com:465"

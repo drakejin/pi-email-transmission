@@ -5,8 +5,8 @@ import os
 import time
 import atexit
 from signal import SIGTERM
-from pet.utils import Logger
 from pet.src.thread import PETThread
+from pet.utils import Logger
 
 logger = Logger.getLogger()
 
@@ -26,6 +26,7 @@ class PETDaemon:
         self.stdin = stdin
         self.stdout = stdout
         self.stderr = stderr
+        # self.pidfile is need initialized variables
         self.pidfile = pidfile
         self.thread = PETThread()
 
@@ -59,7 +60,7 @@ class PETDaemon:
             sys.stderr.write(message)
             sys.exit(1)
 
-        logger.info('deamon going to background, PID: {}'.format(os.getpid()))
+        print('deamon going to background, PID: {}'.format(os.getpid()))
 
         # Redirect standard file descriptors.
         sys.stdout.flush()
@@ -70,7 +71,6 @@ class PETDaemon:
         os.dup2(si.fileno(), sys.stdin.fileno())
         os.dup2(so.fileno(), sys.stdout.fileno())
         os.dup2(se.fileno(), sys.stderr.fileno())
-
         # Write pidfile.
         pid = str(os.getpid())
         open(self.pidfile, 'w+').write("{}\n".format(pid))
@@ -81,7 +81,7 @@ class PETDaemon:
     def delpid(self):
         os.remove(self.pidfile)
 
-    def start(self, config):
+    def start(self):
         """
         Start daemon.
         """
@@ -101,9 +101,9 @@ class PETDaemon:
 
         # Start daemon.
         self.daemonize()
-        self.run()
+        self.thread.run()
 
-    def status(self, config):
+    def status(self):
         """
         Get status of daemon.
         """
@@ -126,7 +126,7 @@ class PETDaemon:
                 .format(self.pidfile)
             sys.stdout.write(message)
 
-    def stop(self, config):
+    def stop(self):
         """
         Stop the daemon.
         """
@@ -157,7 +157,7 @@ class PETDaemon:
             sys.stderr.write(message)
             sys.exit(1)
 
-    def restart(self, config):
+    def restart(self):
         """
         Restart daemon.
         """
@@ -165,8 +165,13 @@ class PETDaemon:
         time.sleep(1)
         self.start()
 
-    def test(self, config):
-        pass
-
-    def run(self):
-        self.thread.start()
+    def nose(self):
+        x = '''
+        1. Transmission Connection Setting Check
+        2. IMAP Validation Check
+        3. SMTP Validation Check
+        4. PET_HOME Local_Environment Value Check
+        5. nosetest test
+        '''
+        print(x)
+        sys.exit(0)

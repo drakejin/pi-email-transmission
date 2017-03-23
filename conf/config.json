@@ -1,11 +1,17 @@
 {
-    "email_check_interval" : 2, 
-    "email_host" : "-----------",
-    "email_port" : 993,
-    "email_input_folder" : "pi-torrent-noty",
-    "email_user" : "----------------",
-    "email_password" : "---------",
-    "transmission_user" : "---------",
-    "transmission_password" : "-------",
-    "transmission_host" : "http://localhost:9091"
+    "check_interval" : 5,
+    "pet_home":"/home/likemilk/workspace/pi-email-transmission",
+    "log_level":"DEBUG",
+    "email":{ 
+        "smtp": "#############:465", 
+        "imap" : "################:993",
+        "folder" : "pi-torrent-noty",
+        "user" : "############@#####",
+        "password" : "############"
+    },
+    "transmission":{
+        "user" : "########",
+        "password" : "########",
+        "host" : "http://localhost:9091"
+    }
 }

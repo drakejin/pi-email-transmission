@@ -1,4 +1,5 @@
 from pet.utils.config import PETConfig
+from pet.utils.config import PETContext
 from pet.src.daemon import PETDaemon
 
 
@@ -9,16 +10,13 @@ class PETService(PETConfig):
         self.daemon = PETDaemon('/tmp/pet-daemon.pid')
 
     def start(self):
-        self.daemon.start(self.config)
+        self.daemon.start()
 
     def stop(self):
-        self.daemon.stop(self.config)
+        self.daemon.stop()
 
     def status(self):
-        self.daemon.status(self.config)
+        self.daemon.status()
 
     def test(self):
-        self.daemon.test(self.config)
-
-    def help(self):
-        print(self.config['docs']['help']['usage'])
+        self.daemon.nose()
