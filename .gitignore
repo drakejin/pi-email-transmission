@@ -3,7 +3,7 @@ pet.egg-info
 build
 dist
 virtualenv
-pit/**/*/__pycache__
+pet/**/*/__pycache__
 logs/*
 
 # Default Setup
