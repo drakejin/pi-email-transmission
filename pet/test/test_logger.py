@@ -10,7 +10,7 @@ from pet.__main__ import main
 
 class TestPET(TestCase):
     def test_is_logger(self):
-        logger = Logger.getLogger()
+        logger = Logger().getLogger()
         logger.debug('So curious!')
         self.assertTrue(1234, 1234)
 
