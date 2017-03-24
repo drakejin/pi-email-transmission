@@ -6,18 +6,11 @@ import email
 from pet.utils import Logger
 from pet.utils.config import PETConfig
 from pet.utils.config import PETContext
-logger = Logger.getLogger()
+
+logger = Logger().getLogger()
 
 
 class MailController(PETConfig):
-    email_format = '''From: %s
-To: %s
-MIME-Version: 1.0
-Content-type: text/html
-Subject: %s
-
-%s
-'''
 
     def __init__(self):
         PETConfig.__init__(self)
@@ -26,7 +19,7 @@ Subject: %s
 
         self.IMAPconnection = imaplib.IMAP4_SSL(
             imap[0],
-            imap[1]
+            str(imap[1])
         )
         self.IMAPconnection.login(
             self.config['email']['user'],

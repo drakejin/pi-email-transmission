@@ -3,15 +3,18 @@ import logging.handlers
 import os
 
 from pet.utils.config import PETConfig
-from pet.utils.config import PETContext
 
 
 class Logger:
+    instance = None
+
     class __Logger:
-        def getLogger(purpose=None):
-            ''' Need to set 2 of OS Enviro value $PROJECT_ENV $PROJECT_HOME '''
+        def getLogger(self):
+            '''
+            Need to set 2 of OS Enviroment value $PROJECT_ENV $PROJECT_HOME
+            '''
             config = PETConfig().config
-            level = purpose and purpose or config['log_level']
+            level = config['log_level']
             home = config['pet_home']
             foldername = home+'/logs'
             filename = foldername+'/'+level+'.log'
@@ -45,11 +48,9 @@ class Logger:
 
             return logger
 
-    instance = None
-
-    def getLogger(purpose=None):
+    def getLogger(self):
         if(Logger.instance):
             Logger.instance
         else:
-            Logger.instance = Logger.__Logger.getLogger(purpose)
+            Logger.instance = Logger.__Logger().getLogger()
         return Logger.instance

@@ -6,7 +6,7 @@ from pet.src.controller import TransmissionController
 import threading
 import time
 
-logger = Logger.getLogger()
+logger = Logger().getLogger()
 
 
 class PETThread(threading.Thread):

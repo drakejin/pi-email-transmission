@@ -255,8 +255,3 @@ torrent-stop
 	"arguments": {},
 	"result": "success"
 }
-
-//================
-
-
-"{'check_interval':5,'email':{'host':'imap.naver.com','port':993,'folder':'pi-torrent-noty','user':'dydwls121200','password':'choco2323!'},'transmission':{'user':'likemilk','password':'choco2323!','host':'http://localhost:9091'}}"

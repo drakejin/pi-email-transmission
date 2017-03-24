@@ -8,7 +8,7 @@ from signal import SIGTERM
 from pet.src.thread import PETThread
 from pet.utils import Logger
 
-logger = Logger.getLogger()
+logger = Logger().getLogger()
 
 
 class PETDaemon:

@@ -2,7 +2,7 @@ import sys
 from pet.utils import Logger
 from pet.src import PETService
 from pet.utils.config import PETContext
-logger = Logger.getLogger()
+logger = Logger().getLogger()
 
 
 def main():
