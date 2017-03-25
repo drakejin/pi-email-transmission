@@ -28,11 +28,6 @@ class Test_PETConfig(TestCase):
         if(config['log_level'] is None):
             config_initialize = False
             self.assertTrue(config_initialize)
-        if(config['pet_home'] is None
-           or 1 > len(config['pet_home'].split('/'))
-           ):
-            config_initialize = False
-            self.assertTrue(config_initialize)
         if(config['check_interval'] is None
            or
            not isinstance(config['check_interval'], (int, ))

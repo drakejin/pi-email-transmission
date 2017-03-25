@@ -15,7 +15,7 @@ class Logger:
             '''
             config = PETConfig().config
             level = config['log_level']
-            home = config['pet_home']
+            home = os.environ['PET_HOME']
             foldername = home+'/logs'
             filename = foldername+'/'+level+'.log'
             if (not os.path.exists(foldername)):
