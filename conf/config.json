@@ -1,17 +1,16 @@
 {
     "check_interval" : 5,
-    "pet_home":"/home/likemilk/workspace/pi-email-transmission",
     "log_level":"DEBUG",
     "email":{ 
-        "smtp": "#############:465", 
-        "imap" : "################:993",
+        "smtp": "smtp.naver.com:465", 
+        "imap" : "imap.naver.com:993",
         "folder" : "pi-torrent-noty",
-        "user" : "############@#####",
-        "password" : "############"
+        "user" : "dydwls121200@naver.com",
+        "password" : "choco2323!"
     },
     "transmission":{
-        "user" : "########",
-        "password" : "########",
+        "user" : "likemilk",
+        "password" : "choco2323!",
         "host" : "http://localhost:9091"
     }
 }

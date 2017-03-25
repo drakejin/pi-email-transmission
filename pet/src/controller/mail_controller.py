@@ -1,7 +1,9 @@
+import sys
 import imaplib
+import email
+
 from smtplib import SMTP_SSL
 from smtplib import SMTPException
-import email
 
 from pet.utils import Logger
 from pet.utils.config import PETConfig
@@ -16,18 +18,24 @@ class MailController(PETConfig):
         PETConfig.__init__(self)
         # get imap connection
         imap = self.config['email']['imap'].split(':')
-
-        self.IMAPconnection = imaplib.IMAP4_SSL(
-            imap[0],
-            str(imap[1])
-        )
-        self.IMAPconnection.login(
-            self.config['email']['user'],
-            self.config['email']['password']
-        )
+        try:
+            self.IMAPconnection = imaplib.IMAP4_SSL(
+                imap[0],
+                str(imap[1])
+            )
+            self.IMAPconnection.login(
+                self.config['email']['user'],
+                self.config['email']['password']
+            )
+        except imaplib.IMAP4.abort as e:
+            logger.warn(str(e))
+            logger.warn(str(e.__dict__))
 
     def __send_seen_flag__(self, uid):
-        result = self.IMAPconnection.uid('STORE', uid, '+FLAGS', '\\Seen')
+        if sys.version_info < (3,):
+            result = self.IMAPconnection.uid('STORE', uid, '+FLAGS', '(\\Seen)')
+        else:
+            result = self.IMAPconnection.uid('STORE', uid, '+FLAGS', '\\Seen')
         return result
 
     def __send_email__(self, email):
@@ -47,7 +55,6 @@ class MailController(PETConfig):
             server.quit()
         except SMTPException as e:
             logger.warn('SMTPException !!:')
-            logger.warn(e)
             logger.warn(str(e))
             logger.warn(str(e.__dict__))
 
@@ -62,7 +69,10 @@ class MailController(PETConfig):
                 result, data = self.IMAPconnection.uid(
                     'fetch', uid, '(RFC822)'
                 )
-                msg = email.message_from_bytes(data[0][1])
+                if sys.version_info < (3,):
+                    msg = email.message_from_string(data[0][1])
+                else:
+                    msg = email.message_from_bytes(data[0][1])
                 for part in msg.walk():
                     if(part.get_content_type() == 'application/x-bittorrent'):
                         # send email's uid and payload
@@ -75,7 +85,6 @@ class MailController(PETConfig):
 
             except Exception as e:
                 logger.warn('IMAPException !!:')
-                logger.warn(e)
                 logger.warn(str(e))
                 logger.warn(str(e.__dict__))
 
