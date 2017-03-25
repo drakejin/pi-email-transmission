@@ -39,7 +39,7 @@ class Logger:
             fileHandler.setFormatter(fomatter)
             streamHandler.setFormatter(fomatter)
 
-            logger = logging.getLogger('transNoty')
+            logger = logging.getLogger(config['email']['folder'])
 
             logger.addHandler(fileHandler)
             logger.addHandler(streamHandler)
