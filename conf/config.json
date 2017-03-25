@@ -2,15 +2,15 @@
     "check_interval" : 5,
     "log_level":"DEBUG",
     "email":{ 
-        "smtp": "smtp.naver.com:465", 
-        "imap" : "imap.naver.com:993",
+        "smtp": "#############:465", 
+        "imap" : "################:993",
         "folder" : "pi-torrent-noty",
-        "user" : "dydwls121200@naver.com",
-        "password" : "choco2323!"
+        "user" : "############@#####",
+        "password" : "############"
     },
     "transmission":{
-        "user" : "likemilk",
-        "password" : "choco2323!",
+        "user" : "########",
+        "password" : "########",
         "host" : "http://localhost:9091"
     }
 }
