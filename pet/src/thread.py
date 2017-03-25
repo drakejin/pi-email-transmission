@@ -1,5 +1,4 @@
 from pet.utils.config import PETConfig
-from pet.utils.config import PETContext
 from pet.utils import Logger
 from pet.src.controller import MailController
 from pet.src.controller import TransmissionController
@@ -14,10 +13,11 @@ class PETThread(threading.Thread):
 
     def __init__(self):
         threading.Thread.__init__(self)
+
+    def run(self):
         self.mail_ctrl = MailController()
         self.trnsmsn_ctrl = TransmissionController()
 
-    def run(self):
         while(True):
             try:
                 time.sleep(PETConfig().config['check_interval'])

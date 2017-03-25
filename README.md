@@ -32,7 +32,6 @@
 // config.json
 {
     "check_interval":10,
-    "pet_home":"/home/likemilk/workspace/pi-email-transmission",
     "log_level":"DEBUG",
     "email":{
         "imap" : "imap.gmail.com:993",

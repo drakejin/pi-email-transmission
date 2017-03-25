@@ -19,7 +19,6 @@ class Logger:
             foldername = home+'/logs'
             filename = foldername+'/'+level+'.log'
             if (not os.path.exists(foldername)):
-                print(foldername)
                 os.makedirs(foldername)
 
             fileHandler = logging.handlers.TimedRotatingFileHandler(
