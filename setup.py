@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name='pet',
-    version='0.1.0',
+    version='0.1.1',
     description='This program or lib can download torrent file through'
     + 'email account and send the torrent file to transmission web controller',
     long_description=readme(),
@@ -23,8 +23,9 @@ setup(
         'Topic :: Text Processing :: Linguistic',
     ],
     include_package_data=True,
-    keywords='torrent transmission rpc imap download bittorrent utorrent',
-    packages=['pet'],
+    keywords='torrent transmission rpc email download bittorrent utorrent',
+    packages=['conf', 'pet', 'pet/src', 'pet/src/controller', 'pet/test',
+              'pet/utils', 'pet/utils/config'],
     # This is for develop yet, I will change this list
     install_requires=[],
     entry_points={

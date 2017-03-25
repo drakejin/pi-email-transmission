@@ -1,10 +1,3 @@
-# *This project is not available yet. Now procceeding*
-
-# To do list
- 
-  1. Make this project Available until 1.0.0v
-  2. Make Transmission API using web controller.
-
 # pi-email-transmission[PET] 
 
  - This program needs to set up two serivce. Email service and Transmission's Web Controller
@@ -14,16 +7,13 @@
 
 # Motivate
 
- - I don't wanna waste resources on my laptop. cause' it's totally be hot when running torrent.
+ - I don't wanna waste resources on my laptop and Smartphone. cause' it's totally be hot when running torrent. 
 
 # Recommand
    
 1. Basically, This program is designed for reducing laptop resources. Therefore, I recommand to run this program on *raspberry-pi*.
 2. Use this program with *Dropbox* or *GoogleDrive* to access your downloaded media files. 
-3. If you can use E-Mail notification service on your smartphone Use it. 
-
-Therefore, Security problem will be resolved by Big Friends's Service.
-
+3. If you can use E-Mail notification service on your smartphone, It's good interaction.
 
 # Configuration
 
@@ -38,8 +28,7 @@ Therefore, Security problem will be resolved by Big Friends's Service.
     - Therefore, you must set up IMAP and SMTP protocol available on you email account.
 
 3. Set up *pi-email-transmission*'s config.json file
-
-  ``` js
+ ``` js
 // config.json
 {
     "check_interval":10,
@@ -60,16 +49,19 @@ Therefore, Security problem will be resolved by Big Friends's Service.
 }
   ```
 
-4. Finally, You can check correct setting about this program when you execute the command that *'pet test'*
-
-> $ pet test
+4. Set up Envrironment variables 
+> export PET_HOME=/home/likemilk/workspace/pi-email-transmission
+ 
+5. Finally, You can check correct setting about this program when you execute this command
+> $ python setup.py test
 > # Have to finish setting Configurations! 
 
 # Install 
 
  ``` bash
 $ git clone https://github.com/drake-jin/pi-email-transmission
-$ make install
+$ cd pi-email-transmission
+$ python setup.py install
  ```
 
 # How is it work going?
