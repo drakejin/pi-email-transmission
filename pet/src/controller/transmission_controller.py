@@ -62,7 +62,6 @@ class TransmissionController(PETConfig):
                 if e.code == 409:
                     self.__session_id = e.headers['X-Transmission-Session-Id']
             except URLError as e:
-                logger.debug('Please check Transmission Web Controller turn on!')
                 sys.exit('Please check Transmission Web Controller turn on!')
 
         res = json.loads(res.read().decode('utf-8'))

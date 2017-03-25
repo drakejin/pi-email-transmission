@@ -40,8 +40,6 @@ class PETThread(threading.Thread):
                     logger.info('Transmission Complete \n\n' + str(completed))
             except Exception as e:
                 logger.warn(e)
-                logger.warn(str(e))
-                logger.warn(str(e.__dict__))
 
 
 '''

@@ -1,18 +1,20 @@
 from unittest import TestCase
 from pet.utils import Logger
-from pet.__main__ import main
+import logging
 
-'''
-
-
-'''
+log_print = logging.getLogger('pet').debug
 
 
-class TestPET(TestCase):
-    def test_is_logger(self):
+def t_print(string):
+    log_print('\n'+string)
+
+
+class Test_Logger(TestCase):
+    def test_logger(self):
         logger = Logger().getLogger()
-        logger.debug('So curious!')
-        self.assertTrue(1234, 1234)
+        config_initialize = True
 
-    def test_basic(self):
-        main()
+        if(id(logger) != id(Logger().getLogger())):
+            config_initialize = False
+
+        self.assertTrue(config_initialize)

@@ -10,8 +10,8 @@ class PETConfig:
         if os.environ.get('TRAVIS_SERVICE', None) is None:
             try:
                 if(PETConfig.config is None):
-                    with open(os.path.dirname(os.path.abspath(__file__))
-                              + '/../../../conf/config.json') as conf:
+                    with open(os.environ['PET_HOME']
+                              + '/conf/config.json') as conf:
                         PETConfig.config = json.load(conf)
             except Exception as e:
                 print(e)
