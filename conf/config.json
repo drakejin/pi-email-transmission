@@ -1,0 +1,16 @@
+{
+    "check_interval" : 5,
+    "log_level":"DEBUG",
+    "email":{ 
+        "smtp": "smtp.gmail.com:465", 
+        "imap" : "imap.gmail.com:993",
+        "folder" : "pi-torrent-noty",
+        "user" : "############@gmail.com",
+        "password" : "#######"
+    },
+    "transmission":{
+        "user" : "##########",
+        "password" : "##########",
+        "host" : "http://localhost:9091"
+    }
+}
