@@ -1,5 +1,0 @@
-include MANIFEST.in
-include README.md
-include README_kr.md
-include conf/config.json
-include docs/*
