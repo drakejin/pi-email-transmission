@@ -2,17 +2,22 @@ from setuptools import setup
 
 
 def readme():
-    with open('README.rst') as f:
-        return f.read()
+    try:
+        import pypandoc
+        long_description = pypandoc.convert('README.md', 'rst')
+    except(IOError, ImportError):
+        long_description = open('README.md').read()
+
+    return long_description
 
 
 setup(
     name='pet',
-    version='0.2.2',
+    version='0.3.1',
     description='This program or lib can download torrent file through'
     + 'email account and send the torrent file to transmission web controller',
     long_description=readme(),
-    download_url='https://github.com/drake-jin/pi-email-transmission/archive/0.2.0.tar.gz',
+    download_url='https://github.com/drake-jin/pi-email-transmission/archive/0.3.0.tar.gz',
     url='http://github.com/drake-jin/pi-email-transmission',
     author='drakejin',
     author_email='dydwls121200@gmail.com',
