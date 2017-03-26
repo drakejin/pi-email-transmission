@@ -14,11 +14,11 @@ def readme():
 
 setup(
     name='pet',
-    version='0.3.3',
+    version='0.3.4',
     description='This program or lib can download torrent file through'
     + 'email account and send the torrent file to transmission web controller',
     long_description=readme(),
-    download_url='https://github.com/drake-jin/pi-email-transmission/archive/0.3.3.tar.gz',
+    download_url='https://github.com/drake-jin/pi-email-transmission/archive/0.3.4.tar.gz',
     url='http://github.com/drake-jin/pi-email-transmission',
     author='drakejin',
     author_email='dydwls121200@gmail.com',
