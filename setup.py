@@ -1,4 +1,4 @@
-from setuptools import setup
+from distutils.core import setup
 
 
 def readme():
@@ -13,7 +13,7 @@ def readme():
 
 setup(
     name='pet',
-    version='0.3.1',
+    version='0.3.2',
     description='This program or lib can download torrent file through'
     + 'email account and send the torrent file to transmission web controller',
     long_description=readme(),
