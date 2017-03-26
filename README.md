@@ -21,7 +21,7 @@
 ``` bash
  $ git clone https://github.com/drake-jin/pi-email-transmission
  $ cd pi-email-transmission
- $ python setup.py install
+ $ pip install -e .
 ```
 
 # 설정을 위한 사진
