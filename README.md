@@ -25,8 +25,12 @@
 ```
 
 # 설정을 위한 사진
- ![Email Configuration](https://raw.githubusercontent.com/drake-jin/pi-email-transmission/master/docs/email.png)
 
+### 이메일 - 네이버
+ ![Email-naver Configuration](https://raw.githubusercontent.com/drake-jin/pi-email-transmission/master/docs/email_naver.png)
+
+### 이메일 - 구글
+ ![Email-google Configuration](https://raw.githubusercontent.com/drake-jin/pi-email-transmission/master/docs/email_google.png)
  ![Transmission Configuration](https://raw.githubusercontent.com/drake-jin/pi-email-transmission/master/docs/transmission.png)
 
 # 설정방법
