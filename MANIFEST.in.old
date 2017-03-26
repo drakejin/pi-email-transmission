@@ -1,8 +1,0 @@
-include MANIFEST.in
-include README.md
-include Makefile
-include conf
-include logs
-include docs
-include .pep8
-include .env

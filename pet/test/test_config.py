@@ -56,10 +56,6 @@ class Test_PETConfig(TestCase):
             config_initialize = False
             self.assertTrue(config_initialize)
 
-        if(id(config) != id(PETConfig().config)):
-            config_initialize = False
-            self.assertTrue(config_initialize)
-
         if(config_initialize):
             t_print('\tConfiguration "config.json" Syntax passed')
         else:
