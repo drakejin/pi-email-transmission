@@ -5,9 +5,9 @@ from setuptools import setup
 def readme():
     try:
         import pypandoc
-        long_description = pypandoc.convert('README.md', 'rst')
+        long_description = pypandoc.convert('README_en.md', 'rst')
     except(IOError, ImportError):
-        long_description = open('README.md').read()
+        long_description = open('README_en.md').read()
 
     return long_description
 

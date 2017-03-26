@@ -23,11 +23,6 @@ $ cd pi-email-transmission
 $ pip install -e .
 ```
 
-# Configuration Images
- ![Email Configuration](https://raw.githubusercontent.com/drake-jin/pi-email-transmission/master/docs/email.png)
-
- ![Transmission Configuration](https://raw.githubusercontent.com/drake-jin/pi-email-transmission/master/docs/transmission.png)
-
 # Configuration
 
 1. Set up transmission web controller setting
@@ -75,6 +70,19 @@ $ pip install -e .
  $ python setup.py test
  # Have to finish setting Configurations!
 ```
+
+# Configuration Images
+
+### Email-Naver
+ ![Email-Naver Configuration](https://raw.githubusercontent.com/drake-jin/pi-email-transmission/master/docs/email_naver.png)
+
+
+### Email-Google
+ ![Email-Google Configuration](https://raw.githubusercontent.com/drake-jin/pi-email-transmission/master/docs/email_google.png)
+
+
+### Transmission-gtk 
+ ![Transmission Configuration](https://raw.githubusercontent.com/drake-jin/pi-email-transmission/master/docs/transmission.png)
 
 # How is it work going?
 

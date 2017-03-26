@@ -24,15 +24,6 @@
  $ pip install -e .
 ```
 
-# 설정을 위한 사진
-
-### 이메일 - 네이버
- ![Email-naver Configuration](https://raw.githubusercontent.com/drake-jin/pi-email-transmission/master/docs/email_naver.png)
-
-### 이메일 - 구글
- ![Email-google Configuration](https://raw.githubusercontent.com/drake-jin/pi-email-transmission/master/docs/email_google.png)
- ![Transmission Configuration](https://raw.githubusercontent.com/drake-jin/pi-email-transmission/master/docs/transmission.png)
-
 # 설정방법
 
 1. 트렌스미션 웹 컨트롤러 셋팅을 해주세요.
@@ -85,6 +76,19 @@
  ```
 
 를 이용하여 사용방법에 대해 알아보세요
+
+# 설정을 위한 사진
+
+### 이메일 - 네이버
+ ![Email-naver Configuration](https://raw.githubusercontent.com/drake-jin/pi-email-transmission/master/docs/email_naver.png)
+
+### 이메일 - 구글
+ ![Email-google Configuration](https://raw.githubusercontent.com/drake-jin/pi-email-transmission/master/docs/email_google.png)
+
+### 트렌스미션-gtk
+ ![Transmission Configuration](https://raw.githubusercontent.com/drake-jin/pi-email-transmission/master/docs/transmission.png)
+
+
 
 # 작동 원리
 
